@@ -1,2105 +1,1783 @@
 <!DOCTYPE html>
 <html lang="id" class="scroll-smooth">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>EONI — Elegance of Natural Indonesia</title>
-<meta name="description" content="EONI — Global fashion brand rooted in Indonesian cultural heritage. Premium clothing that bridges tradition and modernity."/>
-<meta property="og:title" content="EONI — Elegance of Natural Indonesia"/>
-<meta property="og:image" content="https://cigore.github.io/eoni/katalog-4.png"/>
-<link rel="icon" type="image/png" href="https://cigore.github.io/eoni/3.png"/>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Jost:wght@200;300;400;500;600&display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>EONI - Indonesian Cultural Clothing</title>
+  <meta name="description" content="Brand fashion lokal dengan sentuhan budaya Indonesia. Premium, stylish, dan sustainable. Temukan koleksi EONI di sini!">
+  <meta property="og:title" content="EONI - Indonesian Cultural Clothing">
+  <meta property="og:description" content="Koleksi pakaian lokal berkualitas premium dengan inspirasi budaya Indonesia.">
+  <meta property="og:image" content="https://cigore.github.io/eoni/katalog-4.png">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://eonimood.id/">
+  <link rel="icon" type="image/png" href="https://cigore.github.io/eoni/3.png">
 
-<style>
-:root {
-  --forest: #1E4D35;
-  --forest-deep: #142e20;
-  --moss: #2A6652;
-  --sage: #4a8066;
-  --sage-light: #7aab96;
-  --cream: #F8F3EA;
-  --warm-white: #FDF9F3;
-  --gold: #B8965A;
-  --gold-light: #d4b07a;
-  --charcoal: #1a1a1a;
-  --mid: #555;
-  --light-text: #888;
-}
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+  <!-- Phosphor Icons (modern icon library) -->
+  <script src="https://unpkg.com/@phosphor-icons/web@2.1.1/src/index.js"></script>
 
-html { scroll-behavior: smooth; }
+  <!-- Swiper -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
 
-body {
-  font-family: 'Jost', sans-serif;
-  background: var(--cream);
-  color: var(--charcoal);
-  overflow-x: hidden;
-  cursor: none;
-}
+  <!-- AOS -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css"/>
 
-/* CUSTOM CURSOR */
-.cursor {
-  position: fixed;
-  width: 10px; height: 10px;
-  background: var(--forest);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 99999;
-  transform: translate(-50%, -50%);
-  transition: width 0.2s, height 0.2s, background 0.2s;
-  mix-blend-mode: multiply;
-}
-.cursor-follower {
-  position: fixed;
-  width: 36px; height: 36px;
-  border: 1.5px solid var(--forest);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 99998;
-  transform: translate(-50%, -50%);
-  transition: all 0.12s ease;
-  opacity: 0.5;
-}
-body:hover .cursor { opacity: 1; }
-a:hover ~ .cursor, button:hover ~ .cursor { width: 20px; height: 20px; }
+  <style>
+    :root {
+      --green: #2A6652;
+      --green-dark: #1e4f3e;
+      --green-light: #3d8a6e;
+      --cream: #FBF6ED;
+      --cream-2: #F5EDD8;
+      --text-dark: #1C1C1E;
+      --text-muted: #6B7280;
+      --white: #ffffff;
+      --card-bg: #ffffff;
+      --border: #E5E7EB;
+      --shadow: 0 4px 24px rgba(42,102,82,0.10);
+      --shadow-hover: 0 12px 40px rgba(42,102,82,0.18);
+      --bottom-nav-h: 68px;
+      --font-display: 'Playfair Display', Georgia, serif;
+      --font-body: 'DM Sans', sans-serif;
+    }
+    .dark {
+      --cream: #111714;
+      --cream-2: #1a2620;
+      --text-dark: #F3F4F6;
+      --text-muted: #9CA3AF;
+      --card-bg: #1e2d27;
+      --border: #2a3d35;
+      --shadow: 0 4px 24px rgba(0,0,0,0.3);
+      --shadow-hover: 0 12px 40px rgba(0,0,0,0.45);
+    }
 
-/* SCROLLBAR */
-::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: var(--cream); }
-::-webkit-scrollbar-thumb { background: var(--moss); border-radius: 2px; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      background: var(--cream);
+      color: var(--text-dark);
+      transition: background 0.3s, color 0.3s;
+      overflow-x: hidden;
+    }
 
-/* ===== NAVIGATION ===== */
-nav {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  z-index: 1000;
-  padding: 0 5vw;
-  height: 72px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  transition: background 0.4s, backdrop-filter 0.4s;
-}
-nav.scrolled {
-  background: rgba(248,243,234,0.92);
-  backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(30,77,53,0.1);
-}
-.nav-logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  text-decoration: none;
-}
-.nav-logo img {
-  height: 44px; width: 44px;
-  object-fit: contain;
-  filter: brightness(0) saturate(100%) invert(22%) sepia(40%) saturate(600%) hue-rotate(110deg) brightness(60%);
-}
-.nav-logo-text {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 26px;
-  font-weight: 600;
-  letter-spacing: 4px;
-  color: var(--forest);
-  text-transform: uppercase;
-}
-.nav-links {
-  display: flex;
-  gap: 40px;
-  list-style: none;
-}
-.nav-links a {
-  text-decoration: none;
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 2.5px;
-  text-transform: uppercase;
-  color: var(--forest);
-  position: relative;
-  padding-bottom: 3px;
-}
-.nav-links a::after {
-  content: '';
-  position: absolute;
-  bottom: 0; left: 0;
-  width: 0; height: 1px;
-  background: var(--gold);
-  transition: width 0.3s ease;
-}
-.nav-links a:hover::after { width: 100%; }
-.nav-actions {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-.nav-cta {
-  text-decoration: none;
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 2.5px;
-  text-transform: uppercase;
-  color: var(--warm-white);
-  background: var(--forest);
-  padding: 10px 22px;
-  border: none;
-  cursor: pointer;
-  transition: background 0.3s, color 0.3s;
-}
-.nav-cta:hover { background: var(--forest-deep); }
-.nav-hamburger {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-  cursor: pointer;
-  background: none;
-  border: none;
-  padding: 4px;
-}
-.nav-hamburger span {
-  display: block;
-  width: 24px; height: 1.5px;
-  background: var(--forest);
-  transition: all 0.3s;
-}
-.nav-hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(4.5px, 4.5px); }
-.nav-hamburger.open span:nth-child(2) { opacity: 0; }
-.nav-hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(4.5px, -4.5px); }
+    /* BOTTOM PADDING for mobile bottom nav */
+    @media (max-width: 767px) {
+      body { padding-bottom: var(--bottom-nav-h); }
+    }
 
-/* MOBILE MENU */
-.mobile-menu {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: var(--forest);
-  z-index: 999;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 32px;
-}
-.mobile-menu.open { display: flex; }
-.mobile-menu a {
-  text-decoration: none;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 40px;
-  font-weight: 300;
-  color: var(--warm-white);
-  letter-spacing: 3px;
-  transition: color 0.2s;
-}
-.mobile-menu a:hover { color: var(--gold); }
-.mobile-menu-close {
-  position: absolute;
-  top: 24px; right: 5vw;
-  background: none; border: none;
-  cursor: pointer;
-  font-size: 28px;
-  color: var(--warm-white);
-}
+    /* ── PROMO BANNER ── */
+    .promo-banner {
+      background: linear-gradient(90deg, var(--green-dark), var(--green), var(--green-light));
+      background-size: 200% 100%;
+      animation: bannerShift 6s linear infinite;
+      color: #fff;
+      text-align: center;
+      padding: 10px 16px;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.3px;
+    }
+    @keyframes bannerShift { 0%{background-position:0%} 100%{background-position:200%} }
 
-/* ===== HERO ===== */
-.hero {
-  position: relative;
-  height: 100vh;
-  min-height: 700px;
-  display: flex;
-  align-items: flex-end;
-  overflow: hidden;
-}
-.hero-bg {
-  position: absolute;
-  inset: 0;
-  background: var(--forest-deep);
-}
-.hero-bg-img {
-  position: absolute;
-  inset: 0;
-  background: url('https://cigore.github.io/eoni/katalog-4.png') center/cover no-repeat;
-  opacity: 0.45;
-  transform: scale(1.05);
-  animation: heroZoom 12s ease-in-out infinite alternate;
-}
-@keyframes heroZoom {
-  from { transform: scale(1.05); }
-  to { transform: scale(1.12); }
-}
-.hero-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(14,28,20,0.95) 0%, rgba(14,28,20,0.4) 50%, transparent 100%);
-}
-.hero-side-text {
-  position: absolute;
-  right: 5vw;
-  top: 50%;
-  transform: translateY(-50%) rotate(90deg);
-  transform-origin: center;
-  font-size: 10px;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.35);
-  font-weight: 300;
-}
-.hero-scroll-line {
-  position: absolute;
-  bottom: 0;
-  left: 5vw;
-  width: 1px;
-  height: 80px;
-  background: linear-gradient(to bottom, transparent, var(--gold));
-  animation: scrollLine 2s ease-in-out infinite;
-}
-@keyframes scrollLine {
-  0%, 100% { opacity: 0.4; transform: scaleY(0.6); transform-origin: bottom; }
-  50% { opacity: 1; transform: scaleY(1); }
-}
-.hero-content {
-  position: relative;
-  z-index: 2;
-  padding: 0 5vw 80px;
-  width: 100%;
-}
-.hero-eyebrow {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  margin-bottom: 20px;
-  opacity: 0;
-  animation: fadeUp 1s 0.3s ease forwards;
-}
-.hero-eyebrow-line {
-  width: 40px; height: 1px;
-  background: var(--gold);
-}
-.hero-eyebrow-text {
-  font-size: 11px;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  color: var(--gold);
-  font-weight: 400;
-}
-.hero-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(64px, 10vw, 130px);
-  font-weight: 300;
-  color: var(--warm-white);
-  line-height: 0.92;
-  letter-spacing: -1px;
-  margin-bottom: 28px;
-  opacity: 0;
-  animation: fadeUp 1s 0.5s ease forwards;
-}
-.hero-title em {
-  font-style: italic;
-  color: var(--gold-light);
-}
-.hero-subtitle {
-  font-size: 14px;
-  font-weight: 300;
-  letter-spacing: 1.5px;
-  color: rgba(255,255,255,0.65);
-  max-width: 420px;
-  line-height: 1.8;
-  margin-bottom: 44px;
-  opacity: 0;
-  animation: fadeUp 1s 0.7s ease forwards;
-}
-.hero-actions {
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-  opacity: 0;
-  animation: fadeUp 1s 0.9s ease forwards;
-}
-.btn-primary {
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: var(--forest);
-  background: var(--gold);
-  padding: 16px 36px;
-  border: none;
-  cursor: pointer;
-  transition: all 0.3s;
-  position: relative;
-  overflow: hidden;
-}
-.btn-primary::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: var(--warm-white);
-  transform: translateX(-101%);
-  transition: transform 0.4s ease;
-}
-.btn-primary:hover::before { transform: translateX(0); }
-.btn-primary span { position: relative; z-index: 1; }
-.btn-outline {
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: var(--warm-white);
-  background: transparent;
-  padding: 16px 36px;
-  border: 1px solid rgba(255,255,255,0.4);
-  cursor: pointer;
-  transition: all 0.3s;
-}
-.btn-outline:hover { border-color: var(--gold); color: var(--gold); }
-.hero-stats {
-  position: absolute;
-  bottom: 80px;
-  right: 5vw;
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  z-index: 2;
-  opacity: 0;
-  animation: fadeUp 1s 1.1s ease forwards;
-}
-.hero-stat {
-  text-align: right;
-}
-.hero-stat-num {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 36px;
-  font-weight: 600;
-  color: var(--gold);
-  line-height: 1;
-}
-.hero-stat-label {
-  font-size: 9px;
-  letter-spacing: 2.5px;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.35);
-  margin-top: 4px;
-}
+    /* ── HEADER ── */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--cream);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      transition: background 0.3s, border-color 0.3s;
+    }
+    .header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo-wrap img { height: 52px; width: auto; display: block; }
 
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
-}
+    /* Desktop Nav */
+    .desktop-nav { display: none; }
+    @media (min-width: 768px) {
+      .desktop-nav {
+        display: flex;
+        align-items: center;
+        gap: 32px;
+      }
+      .desktop-nav a {
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--text-muted);
+        text-decoration: none;
+        position: relative;
+        padding-bottom: 2px;
+        transition: color 0.2s;
+      }
+      .desktop-nav a::after {
+        content: '';
+        position: absolute;
+        bottom: -2px; left: 0;
+        width: 0; height: 2px;
+        background: var(--green);
+        transition: width 0.25s;
+      }
+      .desktop-nav a:hover { color: var(--green); }
+      .desktop-nav a:hover::after { width: 100%; }
+    }
 
-/* ===== MARQUEE ===== */
-.marquee-section {
-  background: var(--forest);
-  padding: 18px 0;
-  overflow: hidden;
-}
-.marquee-track {
-  display: flex;
-  gap: 0;
-  animation: marquee 20s linear infinite;
-  white-space: nowrap;
-}
-.marquee-item {
-  display: inline-flex;
-  align-items: center;
-  gap: 20px;
-  padding: 0 32px;
-  font-size: 11px;
-  letter-spacing: 3.5px;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.5);
-  font-weight: 300;
-}
-.marquee-dot {
-  width: 4px; height: 4px;
-  border-radius: 50%;
-  background: var(--gold);
-  flex-shrink: 0;
-}
-@keyframes marquee {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
-}
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
 
-/* ===== BRAND PROFILE ===== */
-.brand-profile {
-  padding: 120px 5vw;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 100px;
-  align-items: center;
-  background: var(--warm-white);
-}
-.brand-profile-left {
-  position: relative;
-}
-.brand-profile-img-main {
-  width: 100%;
-  aspect-ratio: 3/4;
-  object-fit: cover;
-  display: block;
-}
-.brand-profile-img-accent {
-  position: absolute;
-  bottom: -40px;
-  right: -40px;
-  width: 52%;
-  aspect-ratio: 1/1;
-  object-fit: cover;
-  border: 6px solid var(--warm-white);
-}
-.brand-profile-badge {
-  position: absolute;
-  top: -20px;
-  left: -20px;
-  width: 110px; height: 110px;
-  background: var(--gold);
-  border-radius: 50%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
-.brand-profile-badge-num {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 30px;
-  font-weight: 600;
-  color: var(--forest);
-  line-height: 1;
-}
-.brand-profile-badge-text {
-  font-size: 8px;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  color: var(--forest);
-  margin-top: 2px;
-}
-.section-eyebrow {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  margin-bottom: 20px;
-}
-.section-eyebrow-line {
-  width: 30px; height: 1px;
-  background: var(--gold);
-}
-.section-eyebrow-text {
-  font-size: 10px;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  color: var(--gold);
-  font-weight: 500;
-}
-.section-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(36px, 4vw, 58px);
-  font-weight: 300;
-  line-height: 1.1;
-  color: var(--forest);
-  margin-bottom: 24px;
-  letter-spacing: -0.5px;
-}
-.section-title em { font-style: italic; }
-.section-body {
-  font-size: 15px;
-  font-weight: 300;
-  line-height: 1.9;
-  color: var(--mid);
-  margin-bottom: 20px;
-}
-.brand-values {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-  margin-top: 40px;
-}
-.brand-value-item {
-  padding: 20px;
-  border-left: 2px solid var(--gold);
-  background: var(--cream);
-}
-.brand-value-icon {
-  font-size: 18px;
-  color: var(--moss);
-  margin-bottom: 10px;
-}
-.brand-value-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 17px;
-  font-weight: 600;
-  color: var(--forest);
-  margin-bottom: 6px;
-}
-.brand-value-text {
-  font-size: 12px;
-  font-weight: 300;
-  line-height: 1.7;
-  color: var(--light-text);
-}
+    /* Dark mode toggle button — modern pill */
+    #darkModeToggle {
+      width: 52px;
+      height: 28px;
+      border-radius: 999px;
+      background: var(--border);
+      border: none;
+      cursor: pointer;
+      position: relative;
+      transition: background 0.3s;
+      flex-shrink: 0;
+    }
+    #darkModeToggle .toggle-thumb {
+      position: absolute;
+      top: 4px;
+      left: 4px;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--green);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.3s cubic-bezier(.4,0,.2,1), background 0.3s;
+      color: #fff;
+    }
+    .dark #darkModeToggle { background: var(--green); }
+    .dark #darkModeToggle .toggle-thumb {
+      transform: translateX(24px);
+      background: #fff;
+      color: var(--green);
+    }
+    #darkModeToggle .toggle-thumb ph-icon { font-size: 12px; }
 
-/* ===== GLOBAL PRESENCE ===== */
-.global-section {
-  background: var(--forest);
-  padding: 100px 5vw;
-  position: relative;
-  overflow: hidden;
-}
-.global-section::before {
-  content: 'GLOBAL';
-  position: absolute;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(100px, 18vw, 220px);
-  font-weight: 700;
-  color: rgba(255,255,255,0.03);
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  white-space: nowrap;
-  pointer-events: none;
-  letter-spacing: 10px;
-}
-.global-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  margin-bottom: 70px;
-  gap: 40px;
-  flex-wrap: wrap;
-}
-.global-header .section-title { color: var(--warm-white); margin-bottom: 0; }
-.global-header .section-eyebrow-text { color: var(--gold); }
-.global-header .section-eyebrow-line { background: var(--gold); }
-.global-header-desc {
-  max-width: 380px;
-  font-size: 14px;
-  font-weight: 300;
-  line-height: 1.8;
-  color: rgba(255,255,255,0.5);
-}
-.pillars-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2px;
-}
-.pillar-card {
-  background: rgba(255,255,255,0.04);
-  padding: 50px 36px;
-  position: relative;
-  overflow: hidden;
-  transition: background 0.4s;
-  cursor: default;
-}
-.pillar-card:hover { background: rgba(255,255,255,0.08); }
-.pillar-card::before {
-  content: attr(data-num);
-  position: absolute;
-  top: 20px; right: 24px;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 80px;
-  font-weight: 700;
-  color: rgba(255,255,255,0.04);
-  line-height: 1;
-}
-.pillar-icon {
-  font-size: 28px;
-  color: var(--gold);
-  margin-bottom: 24px;
-}
-.pillar-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 24px;
-  font-weight: 600;
-  color: var(--warm-white);
-  margin-bottom: 14px;
-}
-.pillar-text {
-  font-size: 13px;
-  font-weight: 300;
-  line-height: 1.8;
-  color: rgba(255,255,255,0.5);
-}
+    /* ── BOTTOM NAVIGATION (Mobile Only) ── */
+    .bottom-nav {
+      display: none;
+    }
+    @media (max-width: 767px) {
+      .bottom-nav {
+        display: flex;
+        position: fixed;
+        bottom: 0; left: 0; right: 0;
+        height: var(--bottom-nav-h);
+        background: var(--card-bg);
+        border-top: 1px solid var(--border);
+        z-index: 200;
+        align-items: stretch;
+        box-shadow: 0 -4px 20px rgba(0,0,0,0.08);
+      }
+      .bn-item {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 3px;
+        text-decoration: none;
+        color: var(--text-muted);
+        font-size: 10px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: color 0.2s;
+        background: none;
+        border: none;
+        padding: 0;
+        position: relative;
+      }
+      .bn-item.active { color: var(--green); }
+      .bn-item.active::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 20%; right: 20%;
+        height: 2.5px;
+        background: var(--green);
+        border-radius: 0 0 4px 4px;
+      }
+      .bn-item ph-icon { font-size: 22px; }
+      .bn-item span { font-size: 10px; line-height: 1; }
+      /* Center CTA button */
+      .bn-center {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .bn-center-btn {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: var(--green);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 16px rgba(42,102,82,0.4);
+        border: none;
+        cursor: pointer;
+        transition: transform 0.2s, box-shadow 0.2s;
+        margin-bottom: 8px;
+      }
+      .bn-center-btn:active { transform: scale(0.94); }
+      .bn-center-btn ph-icon { color: #fff; font-size: 24px; }
+    }
 
-/* ===== COLLECTIONS ===== */
-.collections-section {
-  padding: 120px 5vw;
-  background: var(--cream);
-}
-.collections-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  margin-bottom: 60px;
-  flex-wrap: wrap;
-  gap: 24px;
-}
-.view-all-link {
-  text-decoration: none;
-  font-size: 11px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: var(--moss);
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-weight: 500;
-  transition: gap 0.3s, color 0.3s;
-}
-.view-all-link:hover { gap: 14px; color: var(--forest); }
+    /* ── HERO ── */
+    .hero {
+      min-height: calc(100vh - 120px);
+      display: flex;
+      align-items: center;
+      padding: 60px 20px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 40px;
+      width: 100%;
+      align-items: center;
+    }
+    @media (min-width: 768px) {
+      .hero-inner { grid-template-columns: 1fr 1fr; gap: 60px; }
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(42,102,82,0.1);
+      color: var(--green);
+      border: 1px solid rgba(42,102,82,0.2);
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(48px, 8vw, 88px);
+      font-weight: 900;
+      line-height: 0.95;
+      color: var(--green);
+      letter-spacing: -2px;
+      margin-bottom: 16px;
+    }
+    .hero h2 {
+      font-size: clamp(16px, 2.5vw, 22px);
+      font-weight: 400;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+    .hero p {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.7;
+      max-width: 460px;
+      margin-bottom: 32px;
+    }
+    .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--green);
+      color: #fff;
+      padding: 14px 28px;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 14px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 4px 16px rgba(42,102,82,0.3);
+    }
+    .btn-primary:hover { background: var(--green-dark); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(42,102,82,0.35); }
+    .btn-primary:active { transform: translateY(0); }
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: var(--green);
+      padding: 13px 26px;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 14px;
+      text-decoration: none;
+      border: 2px solid var(--green);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-outline:hover { background: var(--green); color: #fff; transform: translateY(-2px); }
+    .hero-img-wrap {
+      position: relative;
+    }
+    .hero-img-wrap::before {
+      content: '';
+      position: absolute;
+      inset: -12px -12px -12px -12px;
+      border-radius: 24px;
+      background: linear-gradient(135deg, rgba(42,102,82,0.12), transparent 60%);
+      z-index: 0;
+    }
+    .hero-img-wrap img {
+      width: 100%;
+      border-radius: 20px;
+      display: block;
+      position: relative;
+      z-index: 1;
+      box-shadow: var(--shadow-hover);
+    }
+    .hero-float-badge {
+      position: absolute;
+      bottom: 24px;
+      left: -16px;
+      background: var(--card-bg);
+      border-radius: 14px;
+      padding: 12px 16px;
+      box-shadow: var(--shadow-hover);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      z-index: 2;
+      border: 1px solid var(--border);
+    }
+    .hero-float-badge .hfb-icon {
+      width: 40px; height: 40px;
+      background: rgba(42,102,82,0.12);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--green);
+    }
+    .hero-float-badge .hfb-text strong { font-size: 15px; font-weight: 700; color: var(--text-dark); }
+    .hero-float-badge .hfb-text span { font-size: 11px; color: var(--text-muted); display: block; }
 
-/* Filter */
-.filter-bar {
-  display: flex;
-  gap: 0;
-  flex-wrap: wrap;
-  margin-bottom: 50px;
-  border-bottom: 1px solid rgba(30,77,53,0.15);
-}
-.filter-btn {
-  font-size: 11px;
-  letter-spacing: 2.5px;
-  text-transform: uppercase;
-  font-weight: 500;
-  color: var(--light-text);
-  background: none;
-  border: none;
-  padding: 14px 24px;
-  cursor: pointer;
-  position: relative;
-  transition: color 0.3s;
-}
-.filter-btn::after {
-  content: '';
-  position: absolute;
-  bottom: -1px; left: 0;
-  width: 0; height: 2px;
-  background: var(--forest);
-  transition: width 0.3s;
-}
-.filter-btn.active, .filter-btn:hover { color: var(--forest); }
-.filter-btn.active::after { width: 100%; }
-.search-wrap {
-  margin-left: auto;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 0 0 10px;
-}
-.search-input {
-  border: none;
-  border-bottom: 1px solid rgba(30,77,53,0.2);
-  background: transparent;
-  padding: 6px 0;
-  font-size: 13px;
-  font-family: 'Jost', sans-serif;
-  font-weight: 300;
-  color: var(--charcoal);
-  outline: none;
-  width: 160px;
-  transition: border-color 0.3s;
-}
-.search-input:focus { border-color: var(--forest); }
-.search-input::placeholder { color: var(--light-text); letter-spacing: 1px; }
+    /* Hero background decorations */
+    .hero-deco-1 {
+      position: absolute;
+      top: -80px; right: -80px;
+      width: 400px; height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(42,102,82,0.10), transparent 70%);
+      pointer-events: none;
+    }
+    .hero-deco-2 {
+      position: absolute;
+      bottom: -60px; left: -60px;
+      width: 300px; height: 300px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(42,102,82,0.08), transparent 70%);
+      pointer-events: none;
+    }
 
-/* Products Grid */
-.products-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
-}
-.product-card {
-  position: relative;
-  background: var(--warm-white);
-  overflow: hidden;
-  cursor: pointer;
-}
-.product-card-img-wrap {
-  position: relative;
-  aspect-ratio: 3/4;
-  overflow: hidden;
-}
-.product-card-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.7s ease;
-}
-.product-card:hover .product-card-img { transform: scale(1.06); }
-.product-card-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(14,28,20,0.55);
-  opacity: 0;
-  transition: opacity 0.4s;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 16px;
-}
-.product-card:hover .product-card-overlay { opacity: 1; }
-.product-card-action {
-  width: 44px; height: 44px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.12);
-  border: 1px solid rgba(255,255,255,0.4);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  text-decoration: none;
-  font-size: 15px;
-  backdrop-filter: blur(6px);
-  transition: background 0.3s;
-}
-.product-card-action:hover { background: var(--gold); border-color: var(--gold); }
-.product-card-info {
-  padding: 20px 0 10px;
-  border-bottom: 1px solid rgba(30,77,53,0.08);
-}
-.product-card-cat {
-  font-size: 10px;
-  letter-spacing: 2.5px;
-  text-transform: uppercase;
-  color: var(--gold);
-  font-weight: 500;
-  margin-bottom: 6px;
-}
-.product-card-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 20px;
-  font-weight: 600;
-  color: var(--forest);
-  margin-bottom: 4px;
-}
-.product-card-desc {
-  font-size: 12px;
-  font-weight: 300;
-  color: var(--light-text);
-  margin-bottom: 10px;
-}
-.product-card-bottom {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-top: 10px;
-}
-.product-price {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 20px;
-  font-weight: 600;
-  color: var(--moss);
-}
-.product-rating {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  font-size: 12px;
-  color: var(--light-text);
-}
-.product-rating i { color: var(--gold); font-size: 11px; }
-.no-results {
-  grid-column: 1/-1;
-  text-align: center;
-  padding: 80px 0;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 28px;
-  font-weight: 300;
-  color: var(--light-text);
-  font-style: italic;
-}
+    /* ── STATS BAR ── */
+    .stats-bar {
+      background: var(--green);
+      padding: 24px 20px;
+    }
+    .stats-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: #fff;
+    }
+    .stat-item strong {
+      font-family: var(--font-display);
+      font-size: clamp(22px, 4vw, 36px);
+      font-weight: 700;
+      line-height: 1;
+    }
+    .stat-item span { font-size: 12px; opacity: 0.75; margin-top: 4px; text-align: center; }
 
-/* ===== MANIFESTO ===== */
-.manifesto-section {
-  padding: 120px 5vw;
-  background: var(--forest-deep);
-  position: relative;
-  overflow: hidden;
-}
-.manifesto-section::after {
-  content: '';
-  position: absolute;
-  width: 500px; height: 500px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(184,150,90,0.12) 0%, transparent 70%);
-  top: -100px; right: -100px;
-}
-.manifesto-inner {
-  max-width: 860px;
-  margin: 0 auto;
-  text-align: center;
-  position: relative; z-index: 1;
-}
-.manifesto-quote {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(28px, 4.5vw, 58px);
-  font-weight: 300;
-  font-style: italic;
-  line-height: 1.35;
-  color: var(--warm-white);
-  margin-bottom: 40px;
-}
-.manifesto-quote strong {
-  font-weight: 600;
-  color: var(--gold);
-  font-style: normal;
-}
-.manifesto-attr {
-  font-size: 11px;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.3);
-  font-weight: 300;
-}
+    /* ── SECTION HEADERS ── */
+    .section { padding: 80px 20px; }
+    .section-inner { max-width: 1200px; margin: 0 auto; }
+    .section-header { text-align: center; margin-bottom: 56px; }
+    .section-header h2 {
+      font-family: var(--font-display);
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 12px;
+      line-height: 1.2;
+    }
+    .section-header h2 em { color: var(--green); font-style: normal; }
+    .section-divider {
+      width: 48px;
+      height: 3px;
+      background: var(--green);
+      border-radius: 2px;
+      margin: 0 auto 16px;
+    }
+    .section-header p { font-size: 15px; color: var(--text-muted); max-width: 560px; margin: 0 auto; line-height: 1.7; }
 
-/* ===== TEAM ===== */
-.team-section {
-  padding: 120px 5vw;
-  background: var(--warm-white);
-}
-.team-grid {
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 80px;
-  align-items: center;
-  margin-top: 60px;
-}
-.team-img-wrap {
-  position: relative;
-}
-.team-img {
-  width: 100%;
-  aspect-ratio: 4/3;
-  object-fit: cover;
-  display: block;
-}
-.team-img-caption {
-  position: absolute;
-  bottom: -1px;
-  left: 0; right: 0;
-  background: var(--forest);
-  color: var(--warm-white);
-  text-align: center;
-  padding: 14px;
-  font-size: 10px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  font-weight: 500;
-}
-.team-content {}
-.team-story p {
-  font-size: 15px;
-  font-weight: 300;
-  line-height: 1.9;
-  color: var(--mid);
-  margin-bottom: 18px;
-}
-.team-metrics {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 24px;
-  margin-top: 40px;
-  padding-top: 40px;
-  border-top: 1px solid rgba(30,77,53,0.12);
-}
-.metric-num {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 40px;
-  font-weight: 600;
-  color: var(--forest);
-  line-height: 1;
-}
-.metric-label {
-  font-size: 10px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--light-text);
-  margin-top: 6px;
-  font-weight: 400;
-}
+    /* ── ABOUT ── */
+    #about { background: var(--card-bg); }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+      margin-bottom: 60px;
+    }
+    @media (min-width: 640px) { .about-grid { grid-template-columns: repeat(3,1fr); } }
+    .about-card {
+      background: var(--cream);
+      border-radius: 20px;
+      padding: 28px 24px;
+      border: 1px solid var(--border);
+      transition: box-shadow 0.25s, transform 0.25s;
+    }
+    .about-card:hover { box-shadow: var(--shadow-hover); transform: translateY(-4px); }
+    .about-icon {
+      width: 52px; height: 52px;
+      background: rgba(42,102,82,0.12);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--green);
+      margin-bottom: 16px;
+    }
+    .about-icon ph-icon { font-size: 24px; }
+    .about-card h3 { font-size: 17px; font-weight: 700; margin-bottom: 8px; color: var(--text-dark); }
+    .about-card p { font-size: 14px; color: var(--text-muted); line-height: 1.65; }
 
-/* ===== TESTIMONIALS ===== */
-.testi-section {
-  background: var(--cream);
-  padding: 120px 5vw;
-}
-.testi-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  margin-top: 60px;
-}
-.testi-card {
-  background: var(--warm-white);
-  padding: 36px;
-  position: relative;
-}
-.testi-stars {
-  display: flex;
-  gap: 4px;
-  margin-bottom: 20px;
-}
-.testi-stars i { color: var(--gold); font-size: 13px; }
-.testi-text {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 18px;
-  font-weight: 400;
-  font-style: italic;
-  line-height: 1.6;
-  color: var(--forest);
-  margin-bottom: 24px;
-}
-.testi-author {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-}
-.testi-avatar {
-  width: 44px; height: 44px;
-  border-radius: 50%;
-  object-fit: cover;
-}
-.testi-name {
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--charcoal);
-}
-.testi-loc {
-  font-size: 11px;
-  color: var(--light-text);
-  font-weight: 300;
-  margin-top: 2px;
-}
+    .story-block {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+    @media (min-width: 768px) { .story-block { grid-template-columns: 3fr 2fr; } }
+    .story-img { border-radius: 20px; overflow: hidden; aspect-ratio: 4/3; }
+    .story-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .story-text h3 {
+      font-family: var(--font-display);
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 16px;
+    }
+    .story-text p { font-size: 14px; color: var(--text-muted); line-height: 1.7; margin-bottom: 12px; }
 
-/* ===== CONTACT ===== */
-.contact-section {
-  background: var(--forest);
-  padding: 120px 5vw;
-}
-.contact-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  margin-top: 60px;
-}
-.contact-left .section-title { color: var(--warm-white); }
-.contact-left .section-body { color: rgba(255,255,255,0.55); }
-.contact-channels {
-  margin-top: 40px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-.contact-channel {
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  gap: 18px;
-  padding: 18px 22px;
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.08);
-  transition: all 0.3s;
-}
-.contact-channel:hover { background: rgba(255,255,255,0.1); border-color: var(--gold); }
-.contact-channel-icon {
-  width: 44px; height: 44px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  font-size: 18px;
-}
-.contact-channel-info {}
-.contact-channel-name {
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--warm-white);
-}
-.contact-channel-sub {
-  font-size: 12px;
-  font-weight: 300;
-  color: rgba(255,255,255,0.4);
-  margin-top: 2px;
-}
-.contact-channel-arrow {
-  margin-left: auto;
-  color: rgba(255,255,255,0.25);
-  font-size: 12px;
-}
-.contact-form { }
-.form-field {
-  margin-bottom: 24px;
-}
-.form-label {
-  display: block;
-  font-size: 10px;
-  letter-spacing: 2.5px;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.4);
-  font-weight: 500;
-  margin-bottom: 8px;
-}
-.form-input, .form-textarea {
-  width: 100%;
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.1);
-  color: var(--warm-white);
-  font-family: 'Jost', sans-serif;
-  font-size: 14px;
-  font-weight: 300;
-  padding: 14px 16px;
-  outline: none;
-  transition: border-color 0.3s;
-  resize: vertical;
-}
-.form-input:focus, .form-textarea:focus {
-  border-color: var(--gold);
-}
-.form-input::placeholder, .form-textarea::placeholder {
-  color: rgba(255,255,255,0.2);
-}
-.form-submit {
-  width: 100%;
-  background: var(--gold);
-  color: var(--forest);
-  border: none;
-  padding: 16px;
-  font-family: 'Jost', sans-serif;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: background 0.3s;
-  position: relative;
-  overflow: hidden;
-}
-.form-submit:hover { background: var(--gold-light); }
-.form-success {
-  display: none;
-  text-align: center;
-  padding: 16px;
-  background: rgba(74,128,102,0.3);
-  border: 1px solid var(--sage);
-  color: var(--sage-light);
-  font-size: 13px;
-  font-weight: 300;
-  margin-top: 16px;
-}
-.social-links {
-  display: flex;
-  gap: 16px;
-  margin-top: 40px;
-}
-.social-link {
-  width: 42px; height: 42px;
-  border: 1px solid rgba(255,255,255,0.15);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  color: rgba(255,255,255,0.5);
-  font-size: 15px;
-  transition: all 0.3s;
-}
-.social-link:hover { border-color: var(--gold); color: var(--gold); }
+    /* ── PRODUCTS ── */
+    #products { background: var(--cream); }
+    .filter-row {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+    @media (min-width: 640px) { .filter-row { flex-direction: row; align-items: center; justify-content: space-between; } }
+    .search-wrap {
+      position: relative;
+      flex: 1;
+      max-width: 320px;
+    }
+    .search-wrap ph-icon {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      font-size: 18px;
+      pointer-events: none;
+    }
+    .search-wrap input {
+      width: 100%;
+      padding: 11px 14px 11px 42px;
+      border-radius: 12px;
+      border: 1.5px solid var(--border);
+      background: var(--card-bg);
+      color: var(--text-dark);
+      font-family: var(--font-body);
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .search-wrap input:focus { border-color: var(--green); }
+    .filter-select {
+      padding: 11px 16px;
+      border-radius: 12px;
+      border: 1.5px solid var(--border);
+      background: var(--card-bg);
+      color: var(--text-dark);
+      font-family: var(--font-body);
+      font-size: 14px;
+      outline: none;
+      cursor: pointer;
+      transition: border-color 0.2s;
+      min-width: 180px;
+    }
+    .filter-select:focus { border-color: var(--green); }
 
-/* ===== FOOTER ===== */
-footer {
-  background: var(--forest-deep);
-  padding: 60px 5vw 30px;
-  border-top: 1px solid rgba(255,255,255,0.05);
-}
-.footer-top {
-  display: grid;
-  grid-template-columns: 1.5fr 1fr 1fr 1fr;
-  gap: 60px;
-  padding-bottom: 50px;
-  border-bottom: 1px solid rgba(255,255,255,0.07);
-  margin-bottom: 30px;
-}
-.footer-brand-tagline {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 18px;
-  font-style: italic;
-  font-weight: 300;
-  color: rgba(255,255,255,0.4);
-  margin: 16px 0 24px;
-  line-height: 1.5;
-}
-.footer-col-title {
-  font-size: 10px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: var(--gold);
-  font-weight: 500;
-  margin-bottom: 20px;
-}
-.footer-links {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-.footer-links a {
-  text-decoration: none;
-  font-size: 13px;
-  font-weight: 300;
-  color: rgba(255,255,255,0.45);
-  transition: color 0.3s;
-  letter-spacing: 0.5px;
-}
-.footer-links a:hover { color: var(--warm-white); }
-.footer-contact-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  margin-bottom: 10px;
-}
-.footer-contact-item i {
-  color: var(--gold);
-  font-size: 12px;
-  margin-top: 2px;
-  flex-shrink: 0;
-}
-.footer-contact-item span {
-  font-size: 12px;
-  font-weight: 300;
-  color: rgba(255,255,255,0.4);
-  line-height: 1.6;
-}
-.footer-bottom {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-.footer-copy {
-  font-size: 11px;
-  font-weight: 300;
-  color: rgba(255,255,255,0.2);
-  letter-spacing: 0.5px;
-}
-.footer-legal {
-  display: flex;
-  gap: 24px;
-}
-.footer-legal a {
-  text-decoration: none;
-  font-size: 11px;
-  font-weight: 300;
-  color: rgba(255,255,255,0.2);
-  letter-spacing: 0.5px;
-  transition: color 0.3s;
-}
-.footer-legal a:hover { color: rgba(255,255,255,0.5); }
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 24px;
+    }
+    .product-card {
+      background: var(--card-bg);
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      transition: box-shadow 0.25s, transform 0.25s;
+      cursor: pointer;
+    }
+    .product-card:hover { box-shadow: var(--shadow-hover); transform: translateY(-6px); }
+    .product-img-wrap {
+      aspect-ratio: 3/4;
+      overflow: hidden;
+      position: relative;
+    }
+    .product-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+      display: block;
+    }
+    .product-card:hover .product-img-wrap img { transform: scale(1.06); }
+    .product-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.65) 0%, transparent 50%);
+      opacity: 0;
+      transition: opacity 0.3s;
+      display: flex;
+      align-items: flex-end;
+      padding: 16px;
+    }
+    .product-card:hover .product-overlay { opacity: 1; }
+    .product-overlay-btns {
+      display: flex;
+      gap: 8px;
+      width: 100%;
+    }
+    .pob {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 9px 10px;
+      border-radius: 10px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      border: none;
+      transition: opacity 0.2s;
+    }
+    .pob:hover { opacity: 0.88; }
+    .pob-view { background: rgba(255,255,255,0.95); color: var(--green); }
+    .pob-wa { background: #25D366; color: #fff; }
+    .pob ph-icon { font-size: 14px; }
+    .product-category-tag {
+      position: absolute;
+      top: 12px; left: 12px;
+      background: var(--green);
+      color: #fff;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      text-transform: uppercase;
+    }
+    .product-info { padding: 16px 18px; }
+    .product-info h3 { font-size: 15px; font-weight: 700; color: var(--text-dark); margin-bottom: 4px; }
+    .product-info p { font-size: 13px; color: var(--text-muted); margin-bottom: 12px; }
+    .product-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .product-price { font-size: 16px; font-weight: 700; color: var(--green); }
+    .product-rating {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+    .product-rating ph-icon { color: #F59E0B; font-size: 14px; }
+    .no-results { text-align: center; color: var(--text-muted); font-style: italic; padding: 60px 0; grid-column: 1/-1; }
 
-/* ===== MODAL ===== */
-.modal-backdrop {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(14,28,20,0.8);
-  z-index: 2000;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  backdrop-filter: blur(8px);
-}
-.modal-backdrop.open { display: flex; }
-.modal-box {
-  background: var(--warm-white);
-  max-width: 560px;
-  width: 100%;
-  max-height: 90vh;
-  overflow-y: auto;
-  position: relative;
-  animation: modalIn 0.35s ease;
-}
-@keyframes modalIn {
-  from { opacity: 0; transform: scale(0.95) translateY(20px); }
-  to { opacity: 1; transform: none; }
-}
-.modal-img {
-  width: 100%;
-  aspect-ratio: 3/2;
-  object-fit: cover;
-  display: block;
-}
-.modal-body { padding: 32px; }
-.modal-cat {
-  font-size: 10px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: var(--gold);
-  font-weight: 500;
-  margin-bottom: 8px;
-}
-.modal-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 32px;
-  font-weight: 600;
-  color: var(--forest);
-  margin-bottom: 14px;
-}
-.modal-desc {
-  font-size: 14px;
-  font-weight: 300;
-  line-height: 1.8;
-  color: var(--mid);
-  margin-bottom: 24px;
-}
-.modal-price-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 16px 0;
-  border-top: 1px solid rgba(30,77,53,0.1);
-  border-bottom: 1px solid rgba(30,77,53,0.1);
-  margin-bottom: 24px;
-}
-.modal-price {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 28px;
-  font-weight: 600;
-  color: var(--moss);
-}
-.modal-rating {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 13px;
-  color: var(--light-text);
-}
-.modal-rating i { color: var(--gold); }
-.modal-actions {
-  display: flex;
-  gap: 12px;
-}
-.modal-btn-wa {
-  flex: 1;
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  background: var(--forest);
-  color: var(--warm-white);
-  padding: 14px;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  transition: background 0.3s;
-}
-.modal-btn-wa:hover { background: var(--forest-deep); }
-.modal-btn-share {
-  width: 48px; height: 48px;
-  border: 1px solid rgba(30,77,53,0.2);
-  background: none;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--forest);
-  font-size: 16px;
-  transition: all 0.3s;
-}
-.modal-btn-share:hover { background: var(--cream); }
-.modal-close {
-  position: absolute;
-  top: 16px; right: 16px;
-  width: 36px; height: 36px;
-  background: rgba(255,255,255,0.9);
-  border: none;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--forest);
-  font-size: 14px;
-  transition: background 0.3s;
-  z-index: 1;
-}
-.modal-close:hover { background: var(--cream); }
+    /* ── TESTIMONIALS ── */
+    #testimoni { background: var(--card-bg); }
+    .swiper { padding-bottom: 48px !important; }
+    .swiper-pagination-bullet { background: var(--green) !important; }
+    .swiper-pagination-bullet-active { background: var(--green) !important; transform: scale(1.3); }
+    .testi-card {
+      background: var(--cream);
+      border-radius: 20px;
+      padding: 28px 24px;
+      border: 1px solid var(--border);
+    }
+    .testi-top {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 16px;
+    }
+    .testi-top img {
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--green);
+    }
+    .testi-name { font-weight: 700; font-size: 14px; color: var(--text-dark); }
+    .testi-location { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+    .testi-stars { display: flex; gap: 2px; margin-bottom: 14px; }
+    .testi-stars ph-icon { color: #F59E0B; font-size: 15px; }
+    .testi-stars .empty { color: var(--border); }
+    .testi-text { font-size: 14px; color: var(--text-muted); line-height: 1.7; font-style: italic; }
 
-/* WA FLOAT */
-.wa-float {
-  position: fixed;
-  bottom: 30px; right: 30px;
-  z-index: 500;
-  width: 54px; height: 54px;
-  background: #25D366;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  color: white;
-  font-size: 24px;
-  box-shadow: 0 4px 20px rgba(37,211,102,0.4);
-  transition: all 0.3s;
-  animation: fadeUp 1s 1.5s ease both;
-}
-.wa-float:hover { transform: scale(1.1); box-shadow: 0 6px 28px rgba(37,211,102,0.5); }
+    /* ── CONTACT ── */
+    #contact { background: var(--cream); }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+    @media (min-width: 768px) { .contact-grid { grid-template-columns: 1fr 1fr; } }
+    .contact-card {
+      background: var(--card-bg);
+      border-radius: 20px;
+      padding: 28px 24px;
+      border: 1px solid var(--border);
+    }
+    .contact-card h3 { font-size: 18px; font-weight: 700; color: var(--text-dark); margin-bottom: 20px; }
+    .platform-link {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 16px;
+      background: var(--cream);
+      border-radius: 14px;
+      text-decoration: none;
+      margin-bottom: 10px;
+      border: 1px solid var(--border);
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .platform-link:last-child { margin-bottom: 0; }
+    .platform-link:hover { box-shadow: var(--shadow); transform: translateX(4px); }
+    .platform-icon {
+      width: 44px; height: 44px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .platform-icon ph-icon { font-size: 22px; }
+    .platform-icon.wa { background: rgba(37,211,102,0.12); color: #25D366; }
+    .platform-icon.shopee { background: rgba(238,77,45,0.12); color: #EE4D2D; }
+    .platform-icon.tokped { background: rgba(0,177,73,0.12); color: #00B149; }
+    .platform-text strong { display: block; font-size: 14px; font-weight: 600; color: var(--text-dark); }
+    .platform-text span { font-size: 12px; color: var(--text-muted); }
+    .platform-arrow { margin-left: auto; color: var(--text-muted); }
+    .platform-arrow ph-icon { font-size: 18px; }
 
-/* SCROLL TO TOP */
-.scroll-top {
-  position: fixed;
-  bottom: 96px; right: 30px;
-  z-index: 500;
-  width: 40px; height: 40px;
-  background: var(--forest);
-  border: none;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--warm-white);
-  font-size: 14px;
-  opacity: 0; visibility: hidden;
-  transition: all 0.3s;
-}
-.scroll-top.visible { opacity: 1; visibility: visible; }
-.scroll-top:hover { background: var(--forest-deep); }
+    /* Contact form */
+    .form-group { margin-bottom: 14px; }
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1.5px solid var(--border);
+      background: var(--cream);
+      color: var(--text-dark);
+      font-family: var(--font-body);
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.2s;
+      resize: none;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus { border-color: var(--green); }
+    .form-success {
+      display: none;
+      text-align: center;
+      color: var(--green);
+      font-weight: 600;
+      font-size: 14px;
+      margin-top: 10px;
+    }
 
-/* TOAST */
-.toast {
-  position: fixed;
-  top: 100px; right: 30px;
-  z-index: 9999;
-  background: var(--forest);
-  color: var(--warm-white);
-  padding: 14px 24px;
-  font-size: 13px;
-  font-weight: 300;
-  letter-spacing: 0.5px;
-  transform: translateX(calc(100% + 30px));
-  transition: transform 0.4s ease;
-  border-left: 3px solid var(--gold);
-}
-.toast.show { transform: translateX(0); }
+    /* Social row */
+    .social-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 32px;
+    }
+    @media (max-width: 480px) { .social-row { grid-template-columns: 1fr; } }
+    .social-link {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 16px;
+      text-decoration: none;
+      border: 1px solid var(--border);
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .social-link:hover { box-shadow: var(--shadow); transform: translateY(-2px); }
+    .social-icon {
+      width: 40px; height: 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .social-icon ph-icon { font-size: 20px; }
+    .social-icon.ig { background: rgba(228,64,95,0.12); color: #E4405F; }
+    .social-icon.tt { background: rgba(0,0,0,0.08); color: #000; }
+    .dark .social-icon.tt { background: rgba(255,255,255,0.1); color: #fff; }
+    .social-icon.em { background: rgba(59,130,246,0.12); color: #3B82F6; }
+    .social-link-text strong { display: block; font-size: 13px; font-weight: 700; color: var(--text-dark); }
+    .social-link-text span { font-size: 11px; color: var(--text-muted); }
 
-/* SCROLL REVEAL */
-.reveal {
-  opacity: 0;
-  transform: translateY(32px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-}
-.reveal.visible {
-  opacity: 1;
-  transform: none;
-}
-.reveal-delay-1 { transition-delay: 0.15s; }
-.reveal-delay-2 { transition-delay: 0.3s; }
-.reveal-delay-3 { transition-delay: 0.45s; }
+    /* ── FOOTER ── */
+    footer {
+      background: var(--green);
+      color: #fff;
+      padding: 56px 20px 32px;
+    }
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 36px;
+      margin-bottom: 48px;
+    }
+    @media (min-width: 640px) { .footer-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 1024px) { .footer-grid { grid-template-columns: 2fr 1fr 1fr 2fr; } }
+    .footer-brand img { height: 56px; width: auto; display: block; margin-bottom: 12px; }
+    .footer-brand p { font-size: 13px; opacity: 0.7; margin-bottom: 20px; line-height: 1.6; }
+    .footer-socials { display: flex; gap: 10px; }
+    .footer-social-btn {
+      width: 38px; height: 38px;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      color: #fff;
+      transition: background 0.2s;
+    }
+    .footer-social-btn:hover { background: rgba(255,255,255,0.22); }
+    .footer-social-btn ph-icon { font-size: 18px; }
+    .footer-col h4 { font-size: 13px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; opacity: 0.6; margin-bottom: 14px; }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 10px; }
+    .footer-col ul li a { color: rgba(255,255,255,0.75); text-decoration: none; font-size: 14px; transition: color 0.2s; }
+    .footer-col ul li a:hover { color: #fff; }
+    .footer-contact-item { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px; }
+    .footer-contact-item ph-icon { font-size: 16px; opacity: 0.7; flex-shrink: 0; margin-top: 2px; }
+    .footer-contact-item span { font-size: 13px; opacity: 0.75; line-height: 1.5; }
+    .footer-newsletter { margin-top: 20px; }
+    .footer-newsletter p { font-size: 12px; opacity: 0.65; margin-bottom: 10px; }
+    .newsletter-form { display: flex; gap: 8px; }
+    .newsletter-form input {
+      flex: 1;
+      padding: 9px 12px;
+      border-radius: 8px;
+      border: 1.5px solid rgba(255,255,255,0.2);
+      background: rgba(255,255,255,0.1);
+      color: #fff;
+      font-family: var(--font-body);
+      font-size: 13px;
+      outline: none;
+    }
+    .newsletter-form input::placeholder { color: rgba(255,255,255,0.5); }
+    .newsletter-form input:focus { border-color: rgba(255,255,255,0.5); }
+    .newsletter-form button {
+      padding: 9px 14px;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.2);
+      color: #fff;
+      border: none;
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+      white-space: nowrap;
+    }
+    .newsletter-form button:hover { background: rgba(255,255,255,0.3); }
+    .newsletter-msg { font-size: 12px; color: rgba(255,255,255,0.8); margin-top: 6px; display: none; }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.15);
+      padding-top: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      align-items: center;
+      text-align: center;
+    }
+    @media (min-width: 640px) { .footer-bottom { flex-direction: row; justify-content: space-between; } }
+    .footer-bottom p { font-size: 13px; opacity: 0.6; }
 
-/* ===== RESPONSIVE ===== */
-@media (max-width: 1024px) {
-  .nav-links { display: none; }
-  .nav-cta { display: none; }
-  .nav-hamburger { display: flex; }
-  .brand-profile { grid-template-columns: 1fr; gap: 60px; }
-  .brand-profile-img-accent { display: none; }
-  .brand-profile-badge { width: 80px; height: 80px; top: -10px; left: -10px; }
-  .brand-profile-badge-num { font-size: 22px; }
-  .pillars-grid { grid-template-columns: 1fr; }
-  .products-grid { grid-template-columns: repeat(2, 1fr); }
-  .testi-grid { grid-template-columns: 1fr; gap: 16px; }
-  .contact-grid { grid-template-columns: 1fr; gap: 50px; }
-  .team-grid { grid-template-columns: 1fr; gap: 40px; }
-  .footer-top { grid-template-columns: 1fr 1fr; gap: 40px; }
-  .hero-stats { display: none; }
-}
-@media (max-width: 640px) {
-  .products-grid { grid-template-columns: 1fr; }
-  .brand-values { grid-template-columns: 1fr; }
-  .global-header { flex-direction: column; align-items: flex-start; }
-  .footer-top { grid-template-columns: 1fr; gap: 30px; }
-  .hero-title { letter-spacing: -0.5px; }
-  .hero-content { padding: 0 5vw 60px; }
-  .team-metrics { grid-template-columns: 1fr 1fr; }
-  .filter-bar { flex-wrap: wrap; }
-  .search-wrap { margin-left: 0; width: 100%; padding: 10px 0; }
-  .search-input { width: 100%; }
-  .modal-actions { flex-direction: column; }
-  .modal-btn-share { width: 100%; }
-}
-</style>
+    /* ── MODAL ── */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.55);
+      z-index: 500;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .modal-backdrop.open { display: flex; }
+    .modal-box {
+      background: var(--card-bg);
+      border-radius: 24px;
+      width: 100%;
+      max-width: 500px;
+      max-height: 90vh;
+      overflow-y: auto;
+      position: relative;
+      padding: 24px;
+      animation: modalIn 0.3s ease;
+    }
+    @keyframes modalIn { from { opacity:0; transform: scale(0.95) translateY(12px); } to { opacity:1; transform: none; } }
+    .modal-close {
+      position: absolute;
+      top: 16px; right: 16px;
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: var(--cream);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: var(--text-muted);
+      transition: background 0.2s;
+    }
+    .modal-close:hover { background: var(--border); }
+    .modal-close ph-icon { font-size: 18px; }
+    .modal-img { border-radius: 16px; overflow: hidden; margin-bottom: 16px; }
+    .modal-img img { width: 100%; display: block; }
+    .modal-title { font-family: var(--font-display); font-size: 22px; font-weight: 700; color: var(--text-dark); margin-bottom: 8px; }
+    .modal-desc { font-size: 14px; color: var(--text-muted); line-height: 1.6; margin-bottom: 16px; }
+    .modal-price-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+    .modal-price { font-size: 22px; font-weight: 700; color: var(--green); }
+    .modal-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+    .modal-actions .btn-primary, .modal-actions .btn-outline { flex: 1; min-width: 120px; justify-content: center; font-size: 13px; padding: 12px 16px; }
+
+    /* ── SCROLL TO TOP ── */
+    #scrollTopBtn {
+      position: fixed;
+      bottom: 88px;
+      right: 20px;
+      width: 44px; height: 44px;
+      border-radius: 12px;
+      background: var(--green);
+      color: #fff;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: var(--shadow);
+      z-index: 150;
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.3s, transform 0.3s;
+      pointer-events: none;
+    }
+    #scrollTopBtn.visible { opacity: 1; transform: none; pointer-events: auto; }
+    #scrollTopBtn ph-icon { font-size: 20px; }
+    @media (max-width: 767px) { #scrollTopBtn { bottom: calc(var(--bottom-nav-h) + 16px); right: 16px; } }
+
+    /* WhatsApp float */
+    .wa-float {
+      position: fixed;
+      bottom: calc(var(--bottom-nav-h) + 16px);
+      right: 70px;
+      width: 48px; height: 48px;
+      border-radius: 14px;
+      background: #25D366;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 16px rgba(37,211,102,0.4);
+      z-index: 150;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .wa-float:hover { transform: scale(1.08); box-shadow: 0 6px 24px rgba(37,211,102,0.5); }
+    .wa-float ph-icon { color: #fff; font-size: 24px; }
+    @media (min-width: 768px) { .wa-float { bottom: 24px; right: 24px; } }
+
+    /* ── TOAST ── */
+    .toast {
+      position: fixed;
+      top: 24px; right: 24px;
+      background: var(--green);
+      color: #fff;
+      padding: 12px 20px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 500;
+      z-index: 9999;
+      display: none;
+      box-shadow: var(--shadow-hover);
+      animation: toastIn 0.3s ease;
+    }
+    @keyframes toastIn { from { opacity:0; transform:translateY(-8px); } to { opacity:1; transform:none; } }
+
+    /* Smooth scrollbar */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: rgba(42,102,82,0.3); border-radius: 3px; }
+
+    /* AOS overrides */
+    [data-aos] { pointer-events: auto !important; }
+  </style>
 </head>
 <body>
 
-<!-- Custom Cursor -->
-<div class="cursor" id="cursor"></div>
-<div class="cursor-follower" id="cursorFollower"></div>
+<!-- Toast notification -->
+<div class="toast" id="toast"></div>
 
-<!-- Toast -->
-<div class="toast" id="toast">Link berhasil disalin</div>
-
-<!-- WA Float -->
-<a href="https://wa.me/6281378233416" target="_blank" class="wa-float" aria-label="Chat WhatsApp">
-  <i class="fab fa-whatsapp"></i>
-</a>
-
-<!-- Scroll Top -->
-<button class="scroll-top" id="scrollTop" aria-label="Kembali ke atas">
-  <i class="fas fa-arrow-up"></i>
-</button>
-
-<!-- MOBILE MENU -->
-<div class="mobile-menu" id="mobileMenu">
-  <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Tutup menu"><i class="fas fa-times"></i></button>
-  <a href="#home" data-mobile-link>Beranda</a>
-  <a href="#brand" data-mobile-link>Brand</a>
-  <a href="#collections" data-mobile-link>Koleksi</a>
-  <a href="#about" data-mobile-link>Tentang</a>
-  <a href="#contact" data-mobile-link>Kontak</a>
+<!-- Promo Banner -->
+<div class="promo-banner" role="banner">
+  🚚 Gratis Ongkir untuk Pembelian di atas Rp 500.000 &nbsp;·&nbsp; 🎁 Gratis Gift Box untuk setiap pesanan
 </div>
 
-<!-- NAVIGATION -->
-<nav id="mainNav">
-  <a href="#home" class="nav-logo" aria-label="EONI Home">
-    <img src="https://cigore.github.io/eoni/eoni-transp.png" alt="EONI Logo"/>
-    <span class="nav-logo-text">EONI</span>
-  </a>
-  <ul class="nav-links">
-    <li><a href="#brand">Brand</a></li>
-    <li><a href="#collections">Koleksi</a></li>
-    <li><a href="#about">Tentang</a></li>
-    <li><a href="#testimonials">Testimoni</a></li>
-    <li><a href="#contact">Kontak</a></li>
-  </ul>
-  <div class="nav-actions">
-    <a href="#contact" class="nav-cta">Order Sekarang</a>
-    <button class="nav-hamburger" id="hamburgerBtn" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
+<!-- Header -->
+<header id="mainHeader">
+  <div class="header-inner">
+    <a href="#home" class="logo-wrap" aria-label="EONI Beranda">
+      <img src="https://cigore.github.io/eoni/eoni-transp.png" alt="EONI Logo" loading="lazy"/>
+    </a>
+
+    <nav class="desktop-nav" aria-label="Navigasi utama">
+      <a href="#home">Beranda</a>
+      <a href="#about">Tentang</a>
+      <a href="#products">Produk</a>
+      <a href="#testimoni">Testimoni</a>
+      <a href="#contact">Kontak</a>
+    </nav>
+
+    <div class="header-actions">
+      <!-- Modern pill toggle -->
+      <button id="darkModeToggle" aria-label="Toggle dark mode" title="Toggle dark/light mode">
+        <span class="toggle-thumb">
+          <span id="themeIcon">
+            <!-- Sun icon for light mode -->
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+              <circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="6"/><line x1="12" y1="18" x2="12" y2="22"/>
+              <line x1="4.22" y1="4.22" x2="7.05" y2="7.05"/><line x1="16.95" y1="16.95" x2="19.78" y2="19.78"/>
+              <line x1="2" y1="12" x2="6" y2="12"/><line x1="18" y1="12" x2="22" y2="12"/>
+              <line x1="4.22" y1="19.78" x2="7.05" y2="16.95"/><line x1="16.95" y1="7.05" x2="19.78" y2="4.22"/>
+            </svg>
+          </span>
+        </span>
+      </button>
+    </div>
   </div>
+</header>
+
+<!-- Bottom Navigation (Mobile) -->
+<nav class="bottom-nav" aria-label="Navigasi bawah">
+  <a href="#home" class="bn-item active" id="bn-home" aria-label="Beranda">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    <span>Beranda</span>
+  </a>
+  <a href="#products" class="bn-item" id="bn-products" aria-label="Produk">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+    <span>Produk</span>
+  </a>
+  <!-- Center CTA -->
+  <div class="bn-center">
+    <a href="https://wa.me/6281378233416?text=Halo%20EONI!%20Saya%20ingin%20bertanya%20tentang%20produk." target="_blank" class="bn-center-btn" aria-label="Chat WhatsApp">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" style="color:#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+    </a>
+  </div>
+  <a href="#testimoni" class="bn-item" id="bn-testi" aria-label="Testimoni">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+    <span>Review</span>
+  </a>
+  <a href="#contact" class="bn-item" id="bn-contact" aria-label="Kontak">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+    <span>Kontak</span>
+  </a>
 </nav>
 
-<!-- HERO -->
-<section id="home" class="hero">
-  <div class="hero-bg">
-    <div class="hero-bg-img"></div>
-    <div class="hero-overlay"></div>
-  </div>
-  <div class="hero-side-text">Elegance of Natural Indonesia</div>
-  <div class="hero-scroll-line"></div>
-  <div class="hero-content">
-    <div class="hero-eyebrow">
-      <div class="hero-eyebrow-line"></div>
-      <span class="hero-eyebrow-text">Global Fashion · Indonesian Heritage</span>
+<!-- WhatsApp Float -->
+<a href="https://wa.me/6281378233416?text=Halo%20EONI!%20Saya%20ingin%20bertanya%20tentang%20produk." target="_blank" class="wa-float" aria-label="Chat via WhatsApp">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+</a>
+
+<!-- Scroll to top -->
+<button id="scrollTopBtn" aria-label="Kembali ke atas">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
+<!-- ══════════════════════════════════
+     HERO
+══════════════════════════════════ -->
+<section id="home" class="hero" data-aos="fade-up">
+  <div class="hero-deco-1"></div>
+  <div class="hero-deco-2"></div>
+  <div class="hero-inner">
+    <!-- Text -->
+    <div>
+      <div class="hero-badge">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        Indonesian Cultural Clothing
+      </div>
+      <h1>EONI</h1>
+      <h2>Budaya Indonesia<br>dalam Mode Modern</h2>
+      <p>Koleksi pakaian premium yang terinspirasi dari kekayaan budaya Indonesia — dirancang untuk generasi yang menghargai akar tradisi dengan sentuhan kontemporer.</p>
+      <div class="hero-btns">
+        <a href="#products" class="btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          Lihat Koleksi
+        </a>
+        <a href="#contact" class="btn-outline">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          Hubungi Kami
+        </a>
+      </div>
     </div>
-    <h1 class="hero-title">
-      Elegance<br>of <em>Natural</em><br>Indonesia
-    </h1>
-    <p class="hero-subtitle">
-      Brand fashion global yang berakar pada kekayaan budaya Indonesia — merancang pakaian yang menceritakan identitas, bukan sekadar menutup tubuh.
-    </p>
-    <div class="hero-actions">
-      <a href="#collections" class="btn-primary"><span>Jelajahi Koleksi</span> <i class="fas fa-arrow-right"></i></a>
-      <a href="#brand" class="btn-outline"><span>Kenali EONI</span></a>
-    </div>
-  </div>
-  <div class="hero-stats">
-    <div class="hero-stat">
-      <div class="hero-stat-num">6+</div>
-      <div class="hero-stat-label">Koleksi Aktif</div>
-    </div>
-    <div class="hero-stat">
-      <div class="hero-stat-num">∞</div>
-      <div class="hero-stat-label">Inspirasi Budaya</div>
-    </div>
-    <div class="hero-stat">
-      <div class="hero-stat-num">1</div>
-      <div class="hero-stat-label">Visi Global</div>
+    <!-- Image -->
+    <div class="hero-img-wrap" data-aos="fade-left" data-aos-delay="150">
+      <img src="https://cigore.github.io/eoni/katalog-4.png" alt="EONI Collection" loading="eager"/>
+      <div class="hero-float-badge">
+        <div class="hfb-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <div class="hfb-text">
+          <strong>4.9 / 5.0</strong>
+          <span>Rating pelanggan</span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- MARQUEE -->
-<div class="marquee-section" aria-hidden="true">
-  <div class="marquee-track" id="marqueeTrack">
-    <!-- Duplicated for seamless loop -->
+<!-- Stats Bar -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-item" data-aos="fade-up">
+      <strong>2.000+</strong>
+      <span>Pelanggan Puas</span>
+    </div>
+    <div class="stat-item" data-aos="fade-up" data-aos-delay="80">
+      <strong>6+</strong>
+      <span>Koleksi Eksklusif</span>
+    </div>
+    <div class="stat-item" data-aos="fade-up" data-aos-delay="160">
+      <strong>34+</strong>
+      <span>Motif Budaya</span>
+    </div>
   </div>
 </div>
 
-<!-- BRAND PROFILE -->
-<section id="brand" class="brand-profile">
-  <div class="brand-profile-left reveal">
-    <div class="brand-profile-badge">
-      <div class="brand-profile-badge-num">EST</div>
-      <div class="brand-profile-badge-text">2024 · Lokal</div>
+<!-- ══════════════════════════════════
+     ABOUT
+══════════════════════════════════ -->
+<section id="about" class="section">
+  <div class="section-inner">
+    <div class="section-header" data-aos="fade-up">
+      <div class="section-divider"></div>
+      <h2>Tentang <em>EONI</em></h2>
+      <p>Menggabungkan keindahan budaya lokal Indonesia dengan desain modern untuk menciptakan pakaian yang tidak hanya stylish tetapi juga bermakna.</p>
     </div>
-    <img src="https://cigore.github.io/eoni/katalog-6.png" alt="EONI Heritage Collection" class="brand-profile-img-main"/>
-    <img src="https://cigore.github.io/eoni/katalog-1.png" alt="EONI Detail" class="brand-profile-img-accent"/>
-  </div>
-  <div class="brand-profile-right reveal reveal-delay-1">
-    <div class="section-eyebrow">
-      <div class="section-eyebrow-line"></div>
-      <span class="section-eyebrow-text">Profil Brand</span>
-    </div>
-    <h2 class="section-title">Budaya Indonesia,<br><em>Panggung Dunia</em></h2>
-    <p class="section-body">
-      EONI — singkatan dari <strong>Elegance of Natural Indonesia</strong> — lahir dari keyakinan bahwa warisan budaya Indonesia memiliki daya tarik universal yang layak hadir di panggung fashion global.
-    </p>
-    <p class="section-body">
-      Kami bukan sekadar brand pakaian lokal. Kami adalah jembatan antara filosofi tradisi dan estetika modern — merancang koleksi yang bisa dikenakan di jalanan Jakarta maupun Shibuya, di rumah kreatif Bali maupun galeri seni Paris.
-    </p>
-    <div class="brand-values">
-      <div class="brand-value-item reveal reveal-delay-1">
-        <div class="brand-value-icon"><i class="fas fa-leaf"></i></div>
-        <div class="brand-value-title">Kearifan Lokal</div>
-        <div class="brand-value-text">Setiap motif terinspirasi dari kekayaan nusantara — dari batik Jawa hingga tenun Sumba.</div>
-      </div>
-      <div class="brand-value-item reveal reveal-delay-2">
-        <div class="brand-value-icon"><i class="fas fa-globe"></i></div>
-        <div class="brand-value-title">Visi Global</div>
-        <div class="brand-value-text">Dirancang untuk melampaui batas — siapapun, dimanapun, dapat mengenakan identitas Indonesia.</div>
-      </div>
-      <div class="brand-value-item reveal reveal-delay-1">
-        <div class="brand-value-icon"><i class="fas fa-gem"></i></div>
-        <div class="brand-value-title">Kualitas Premium</div>
-        <div class="brand-value-text">Material terpilih, konstruksi teliti, detail yang tidak dikorbankan demi harga.</div>
-      </div>
-      <div class="brand-value-item reveal reveal-delay-2">
-        <div class="brand-value-icon"><i class="fas fa-recycle"></i></div>
-        <div class="brand-value-title">Berkelanjutan</div>
-        <div class="brand-value-text">Mendukung pengrajin lokal dan praktik produksi yang bertanggung jawab terhadap bumi.</div>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- GLOBAL PILLARS -->
-<section class="global-section">
-  <div class="global-header reveal">
-    <div>
-      <div class="section-eyebrow">
-        <div class="section-eyebrow-line"></div>
-        <span class="section-eyebrow-text">Mengapa EONI Global</span>
-      </div>
-      <h2 class="section-title" style="color:var(--warm-white);">Tiga Pilar yang<br><em>Membedakan Kami</em></h2>
-    </div>
-    <p class="global-header-desc">
-      EONI dibangun di atas fondasi yang melampaui tren sesaat — kami hadir untuk generasi yang menghargai autentisitas dan keindahan yang bermakna.
-    </p>
-  </div>
-  <div class="pillars-grid reveal">
-    <div class="pillar-card" data-num="01">
-      <div class="pillar-icon"><i class="fas fa-map-marked-alt"></i></div>
-      <div class="pillar-title">Identitas Budaya</div>
-      <div class="pillar-text">Setiap koleksi adalah riset mendalam ke dalam budaya Indonesia — bukan sekadar motif, tapi filosofi dan cerita di baliknya yang diterjemahkan ke dalam desain kontemporer.</div>
-    </div>
-    <div class="pillar-card" data-num="02">
-      <div class="pillar-icon"><i class="fas fa-layer-group"></i></div>
-      <div class="pillar-title">Multi-Lini Fashion</div>
-      <div class="pillar-text">EONI dirancang untuk masuk ke segala lini — dari casual streetwear hingga premium ethnic wear, dari merchandise komunitas hingga koleksi limited edition kolaborasi.</div>
-    </div>
-    <div class="pillar-card" data-num="03">
-      <div class="pillar-icon"><i class="fas fa-handshake"></i></div>
-      <div class="pillar-title">Ekosistem Kreatif</div>
-      <div class="pillar-text">Kami percaya pada kekuatan kolaborasi — dengan pengrajin, seniman, dan komunitas budaya untuk menciptakan karya yang benar-benar hidup dan bermakna.</div>
-    </div>
-  </div>
-</section>
-
-<!-- COLLECTIONS -->
-<section id="collections" class="collections-section">
-  <div class="collections-header reveal">
-    <div>
-      <div class="section-eyebrow">
-        <div class="section-eyebrow-line"></div>
-        <span class="section-eyebrow-text">Koleksi Kami</span>
-      </div>
-      <h2 class="section-title">Pilihan <em>Terkurasi</em></h2>
-    </div>
-    <a href="#contact" class="view-all-link">Semua Koleksi <i class="fas fa-arrow-right"></i></a>
-  </div>
-  <!-- Filter Bar -->
-  <div class="filter-bar reveal" id="filterBar">
-    <button class="filter-btn active" data-cat="">Semua</button>
-    <div class="search-wrap">
-      <i class="fas fa-search" style="color:var(--light-text);font-size:12px;"></i>
-      <input type="text" class="search-input" id="searchInput" placeholder="Cari produk..."/>
-    </div>
-  </div>
-  <div class="products-grid" id="productsGrid"></div>
-</section>
-
-<!-- MANIFESTO -->
-<section class="manifesto-section">
-  <div class="manifesto-inner reveal">
-    <div class="section-eyebrow" style="justify-content:center; margin-bottom:30px;">
-      <div class="section-eyebrow-line"></div>
-      <span class="section-eyebrow-text">Manifesto Kami</span>
-      <div class="section-eyebrow-line"></div>
-    </div>
-    <p class="manifesto-quote">
-      "Kita mewarisi tanah yang kaya — <strong>kaya motif, kaya filosofi, kaya cerita.</strong> EONI hadir bukan untuk meniru dunia, tapi untuk memperkenalkan dunia <strong>pada kita.</strong>"
-    </p>
-    <div class="manifesto-attr">— EONI Brand Manifesto, 2024</div>
-  </div>
-</section>
-
-<!-- ABOUT / TEAM -->
-<section id="about" class="team-section">
-  <div class="reveal">
-    <div class="section-eyebrow">
-      <div class="section-eyebrow-line"></div>
-      <span class="section-eyebrow-text">Cerita Kami</span>
-    </div>
-    <h2 class="section-title">Dibangun oleh<br><em>Pecinta Budaya</em></h2>
-  </div>
-  <div class="team-grid">
-    <div class="team-img-wrap reveal">
-      <img src="https://cigore.github.io/eoni/tim4.png" alt="Tim EONI" class="team-img"/>
-      <div class="team-img-caption">Tim EONI — Sumatera Barat, Indonesia</div>
-    </div>
-    <div class="team-content reveal reveal-delay-2">
-      <div class="team-story">
-        <p>EONI lahir dari frustrasi yang sederhana: mengapa produk fashion Indonesia yang terinspirasi budaya lokal sering terlihat seperti souvenir, bukan karya yang layak bersaing secara global?</p>
-        <p>Tim kami adalah kumpulan anak muda yang percaya bahwa identitas nasional bisa dan harus ditampilkan dengan kebanggaan — tanpa kehilangan relevansi di era modern. Kami melakukan riset mendalam ke setiap motif, setiap filosofi, setiap cerita di balik kain.</p>
-        <p>Hasilnya adalah koleksi yang tidak hanya indah secara visual, tapi bermakna secara kultural — sebuah pernyataan identitas yang bisa dikenakan siapapun, di manapun di dunia.</p>
-      </div>
-      <div class="team-metrics">
-        <div>
-          <div class="metric-num">6+</div>
-          <div class="metric-label">Koleksi</div>
+    <div class="about-grid">
+      <div class="about-card" data-aos="fade-up">
+        <div class="about-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
         </div>
-        <div>
-          <div class="metric-num">17+</div>
-          <div class="metric-label">Inspirasi Daerah</div>
+        <h3>Kearifan Lokal</h3>
+        <p>Setiap desain kami terinspirasi dari keberagaman budaya Indonesia yang kaya, mempromosikan dan melestarikan warisan leluhur kita.</p>
+      </div>
+      <div class="about-card" data-aos="fade-up" data-aos-delay="80">
+        <div class="about-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
         </div>
-        <div>
-          <div class="metric-num">100%</div>
-          <div class="metric-label">Lokal</div>
+        <h3>Kualitas Premium</h3>
+        <p>Bahan berkualitas tinggi dan proses produksi yang teliti memastikan setiap produk EONI nyaman, awet, dan bernilai tinggi.</p>
+      </div>
+      <div class="about-card" data-aos="fade-up" data-aos-delay="160">
+        <div class="about-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </div>
+        <h3>Berkelanjutan</h3>
+        <p>Berkomitmen untuk bisnis yang bertanggung jawab — mendukung pengrajin lokal dan mengurangi dampak lingkungan di setiap langkah produksi.</p>
+      </div>
+    </div>
+
+    <div class="story-block" data-aos="fade-up" data-aos-delay="100">
+      <div class="story-img">
+        <img src="https://cigore.github.io/eoni/tim4.png" alt="Tim EONI" loading="lazy"/>
+      </div>
+      <div class="story-text">
+        <h3>Cerita Kami</h3>
+        <p>EONI lahir dari kecintaan terhadap keberagaman budaya Indonesia yang kaya. Kami percaya bahwa warisan budaya Indonesia memiliki nilai estetika tinggi dan cerita yang mendalam, yang layak diangkat ke dalam desain modern.</p>
+        <p>Setiap koleksi kami mewakili kekayaan motif, warna, dan filosofi dari berbagai daerah di Indonesia. Dengan sentuhan desain kontemporer, kami menciptakan pakaian yang menjadi media untuk bercerita tentang keindahan budaya Nusantara.</p>
+        <div style="margin-top: 24px;">
+          <a href="#products" class="btn-primary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+            Lihat Produk Kami
+          </a>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- TESTIMONIALS -->
-<section id="testimonials" class="testi-section">
-  <div class="reveal">
-    <div class="section-eyebrow">
-      <div class="section-eyebrow-line"></div>
-      <span class="section-eyebrow-text">Testimoni</span>
+<!-- ══════════════════════════════════
+     PRODUCTS
+══════════════════════════════════ -->
+<section id="products" class="section">
+  <div class="section-inner">
+    <div class="section-header" data-aos="fade-up">
+      <div class="section-divider"></div>
+      <h2>Koleksi <em>Kami</em></h2>
+      <p>Jelajahi koleksi pakaian terinspirasi budaya Indonesia. Desain eksklusif dengan kualitas premium untuk generasi modern.</p>
     </div>
-    <h2 class="section-title">Kata <em>Mereka</em></h2>
-  </div>
-  <div class="testi-grid reveal" id="testiGrid"></div>
-</section>
 
-<!-- CONTACT -->
-<section id="contact" class="contact-section">
-  <div class="contact-left reveal">
-    <div class="section-eyebrow">
-      <div class="section-eyebrow-line"></div>
-      <span class="section-eyebrow-text" style="color:var(--gold);">Hubungi Kami</span>
-    </div>
-    <h2 class="section-title" style="color:var(--warm-white);">Mari <em>Berkolaborasi</em></h2>
-    <p class="section-body">Tertarik dengan koleksi EONI atau ingin berkolaborasi? Kami siap merespons setiap pertanyaan dengan cepat.</p>
-  </div>
-  <div class="contact-grid">
-    <div class="contact-left-col reveal">
-      <div class="contact-channels">
-        <a href="https://wa.me/6281378233416?text=Halo,%20saya%20ingin%20bertanya%20tentang%20produk%20EONI" target="_blank" class="contact-channel">
-          <div class="contact-channel-icon" style="background:rgba(37,211,102,0.15);">
-            <i class="fab fa-whatsapp" style="color:#25D366;"></i>
-          </div>
-          <div class="contact-channel-info">
-            <div class="contact-channel-name">WhatsApp</div>
-            <div class="contact-channel-sub">Respons dalam 1–2 jam</div>
-          </div>
-          <i class="fas fa-chevron-right contact-channel-arrow"></i>
-        </a>
-        <a href="https://shopee.co.id/eonimood.id" target="_blank" class="contact-channel">
-          <div class="contact-channel-icon" style="background:rgba(238,77,45,0.15);">
-            <i class="fas fa-shopping-bag" style="color:#EE4D2D;"></i>
-          </div>
-          <div class="contact-channel-info">
-            <div class="contact-channel-name">Shopee</div>
-            <div class="contact-channel-sub">EONI Official Store</div>
-          </div>
-          <i class="fas fa-chevron-right contact-channel-arrow"></i>
-        </a>
-        <a href="https://tokopedia.com/eonimood.id" target="_blank" class="contact-channel">
-          <div class="contact-channel-icon" style="background:rgba(66,181,73,0.15);">
-            <i class="fas fa-store" style="color:#42B549;"></i>
-          </div>
-          <div class="contact-channel-info">
-            <div class="contact-channel-name">Tokopedia</div>
-            <div class="contact-channel-sub">EONI Official</div>
-          </div>
-          <i class="fas fa-chevron-right contact-channel-arrow"></i>
-        </a>
-        <a href="https://instagram.com/eonimood.id" target="_blank" class="contact-channel">
-          <div class="contact-channel-icon" style="background:rgba(225,48,108,0.15);">
-            <i class="fab fa-instagram" style="color:#E1306C;"></i>
-          </div>
-          <div class="contact-channel-info">
-            <div class="contact-channel-name">Instagram</div>
-            <div class="contact-channel-sub">@eonimood.id</div>
-          </div>
-          <i class="fas fa-chevron-right contact-channel-arrow"></i>
-        </a>
+    <div class="filter-row" data-aos="fade-up">
+      <div class="search-wrap">
+        <svg style="position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--text-muted);pointer-events:none;" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input id="searchInput" type="search" placeholder="Cari produk..." aria-label="Cari produk"/>
       </div>
-      <div class="social-links" style="margin-top: 30px;">
-        <a href="https://instagram.com/eonimood.id" target="_blank" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-        <a href="https://tiktok.com/@eonimood" target="_blank" class="social-link" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
-        <a href="https://wa.me/6281378233416" target="_blank" class="social-link" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-        <a href="mailto:eonimood.id@gmail.com" class="social-link" aria-label="Email"><i class="fas fa-envelope"></i></a>
-      </div>
+      <select id="categoryFilter" class="filter-select" aria-label="Filter kategori"></select>
     </div>
-    <div class="contact-form reveal reveal-delay-2">
-      <form id="contactForm" action="https://formspree.io/f/xanjddag" method="POST">
-        <div class="form-field">
-          <label class="form-label" for="nameInput">Nama Lengkap</label>
-          <input type="text" id="nameInput" name="name" required class="form-input" placeholder="Masukkan nama Anda"/>
-        </div>
-        <div class="form-field">
-          <label class="form-label" for="emailInput">Alamat Email</label>
-          <input type="email" id="emailInput" name="email" required class="form-input" placeholder="email@anda.com"/>
-        </div>
-        <div class="form-field">
-          <label class="form-label" for="msgInput">Pesan</label>
-          <textarea id="msgInput" name="message" rows="5" required class="form-textarea" placeholder="Ceritakan kebutuhan Anda..."></textarea>
-        </div>
-        <button type="submit" class="form-submit">Kirim Pesan <i class="fas fa-paper-plane" style="margin-left:8px;"></i></button>
-        <div class="form-success" id="formSuccess">Terima kasih! Pesan Anda telah terkirim. Kami akan segera merespons.</div>
-      </form>
-    </div>
-  </div>
-</section>
 
-<!-- FOOTER -->
-<footer>
-  <div class="footer-top">
-    <div>
-      <a href="#home" style="display:flex;align-items:center;gap:10px;text-decoration:none;margin-bottom:4px;">
-        <img src="https://cigore.github.io/eoni/eoni-transp.png" alt="EONI" style="height:36px;filter:invert(1);opacity:0.8;"/>
-        <span style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;letter-spacing:4px;color:var(--warm-white);text-transform:uppercase;">EONI</span>
+    <div class="products-grid" id="productsGrid"></div>
+
+    <div style="text-align:center;margin-top:40px;" data-aos="fade-up">
+      <a href="https://wa.me/6281378233416?text=Halo%20EONI!%20Saya%20ingin%20memesan%20produk." target="_blank" class="btn-primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        Pesan Sekarang via WhatsApp
       </a>
-      <p class="footer-brand-tagline">Elegance of Natural Indonesia</p>
-      <div style="display:flex;gap:14px;">
-        <a href="https://instagram.com/eonimood.id" target="_blank" class="social-link" style="width:34px;height:34px;" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-        <a href="https://tiktok.com/@eonimood" target="_blank" class="social-link" style="width:34px;height:34px;" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
-        <a href="https://wa.me/6281378233416" target="_blank" class="social-link" style="width:34px;height:34px;" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-      </div>
-    </div>
-    <div>
-      <div class="footer-col-title">Navigasi</div>
-      <ul class="footer-links">
-        <li><a href="#home">Beranda</a></li>
-        <li><a href="#brand">Profil Brand</a></li>
-        <li><a href="#collections">Koleksi</a></li>
-        <li><a href="#about">Tentang Kami</a></li>
-        <li><a href="#contact">Kontak</a></li>
-      </ul>
-    </div>
-    <div>
-      <div class="footer-col-title">Koleksi</div>
-      <ul class="footer-links" id="footerCatList"></ul>
-    </div>
-    <div>
-      <div class="footer-col-title">Kontak</div>
-      <div class="footer-contact-item">
-        <i class="fas fa-map-marker-alt"></i>
-        <span>Sumatera Barat, Indonesia</span>
-      </div>
-      <div class="footer-contact-item">
-        <i class="fas fa-phone"></i>
-        <span>+62 813-7823-3416</span>
-      </div>
-      <div class="footer-contact-item">
-        <i class="fas fa-envelope"></i>
-        <span>eonimood.id@gmail.com</span>
-      </div>
-      <div class="footer-contact-item" style="margin-top:14px;">
-        <i class="fab fa-instagram"></i>
-        <span>@eonimood.id</span>
-      </div>
     </div>
   </div>
-  <div class="footer-bottom">
-    <p class="footer-copy">© 2024 EONI. All rights reserved. Indonesian Cultural Clothing Brand.</p>
-    <div class="footer-legal">
-      <a href="#">Privacy Policy</a>
-      <a href="#">Terms of Use</a>
+</section>
+
+<!-- ══════════════════════════════════
+     TESTIMONIALS
+══════════════════════════════════ -->
+<section id="testimoni" class="section">
+  <div class="section-inner">
+    <div class="section-header" data-aos="fade-up">
+      <div class="section-divider"></div>
+      <h2>Apa Kata <em>Mereka?</em></h2>
+      <p>Lebih dari 2.000 pelanggan puas dengan koleksi EONI. Berikut pengalaman mereka.</p>
+    </div>
+    <div class="swiper" id="testiSwiper" data-aos="fade-up">
+      <div class="swiper-wrapper" id="testiWrapper"></div>
+      <div class="swiper-pagination"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════
+     CONTACT
+══════════════════════════════════ -->
+<section id="contact" class="section">
+  <div class="section-inner">
+    <div class="section-header" data-aos="fade-up">
+      <div class="section-divider"></div>
+      <h2>Hubungi <em>Kami</em></h2>
+      <p>Tertarik dengan produk kami? Hubungi melalui platform berikut untuk informasi lebih lanjut atau pemesanan.</p>
+    </div>
+
+    <div class="contact-grid" data-aos="fade-up">
+      <!-- Platform -->
+      <div class="contact-card">
+        <h3>Platform Belanja</h3>
+        <a href="https://wa.me/6281378233416?text=Halo,%20saya%20ingin%20bertanya%20tentang%20produk%20EONI" target="_blank" class="platform-link">
+          <div class="platform-icon wa">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+          </div>
+          <div class="platform-text">
+            <strong>WhatsApp</strong>
+            <span>Respons cepat 1–2 jam</span>
+          </div>
+          <div class="platform-arrow">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+          </div>
+        </a>
+        <a href="https://shopee.co.id/eonimood.id" target="_blank" class="platform-link">
+          <div class="platform-icon shopee">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          </div>
+          <div class="platform-text">
+            <strong>Shopee</strong>
+            <span>EONI Official Store</span>
+          </div>
+          <div class="platform-arrow">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+          </div>
+        </a>
+        <a href="https://tokopedia.com/eonimood.id" target="_blank" class="platform-link">
+          <div class="platform-icon tokped">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <div class="platform-text">
+            <strong>Tokopedia</strong>
+            <span>EONI Official</span>
+          </div>
+          <div class="platform-arrow">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+          </div>
+        </a>
+      </div>
+
+      <!-- Form -->
+      <div class="contact-card">
+        <h3>Kirim Pesan</h3>
+        <form id="contactForm" action="https://formspree.io/f/xanjddag" method="POST">
+          <div class="form-group">
+            <input type="text" name="name" placeholder="Nama Anda" required autocomplete="name"/>
+          </div>
+          <div class="form-group">
+            <input type="email" name="email" placeholder="Alamat Email" required autocomplete="email"/>
+          </div>
+          <div class="form-group">
+            <textarea name="message" rows="4" placeholder="Tulis pesan Anda..." required></textarea>
+          </div>
+          <button type="submit" class="btn-primary" style="width:100%;justify-content:center;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+            Kirim Pesan
+          </button>
+        </form>
+        <div class="form-success" id="formSuccess">✅ Terima kasih! Pesan Anda sudah terkirim.</div>
+        <p style="font-size:12px;color:var(--text-muted);margin-top:12px;">Atau chat kami di WhatsApp untuk respon tercepat.</p>
+      </div>
+    </div>
+
+    <!-- Social Row -->
+    <div class="social-row" data-aos="fade-up">
+      <a href="https://instagram.com/eonimood.id" target="_blank" class="social-link" aria-label="Instagram EONI">
+        <div class="social-icon ig">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </div>
+        <div class="social-link-text">
+          <strong>Instagram</strong>
+          <span>@eonimood.id</span>
+        </div>
+      </a>
+      <a href="https://tiktok.com/@eonimood" target="_blank" class="social-link" aria-label="TikTok EONI">
+        <div class="social-icon tt">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.73z"/></svg>
+        </div>
+        <div class="social-link-text">
+          <strong>TikTok</strong>
+          <span>@eonimood.id</span>
+        </div>
+      </a>
+      <a href="mailto:eonimood.id@gmail.com" class="social-link" aria-label="Email EONI">
+        <div class="social-icon em">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </div>
+        <div class="social-link-text">
+          <strong>Email</strong>
+          <span>eonimood.id@gmail.com</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════
+     FOOTER
+══════════════════════════════════ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <!-- Brand -->
+      <div class="footer-brand">
+        <img src="https://cigore.github.io/eoni/eoni.png" alt="EONI Logo" loading="lazy"/>
+        <p>Elegance of Natural Indonesia — brand fashion lokal yang merayakan keindahan dan kekayaan budaya Nusantara dalam setiap helai kain.</p>
+        <div class="footer-socials">
+          <a href="https://instagram.com/eonimood.id" target="_blank" class="footer-social-btn" aria-label="Instagram">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          <a href="https://tiktok.com/@eonimood.id" target="_blank" class="footer-social-btn" aria-label="TikTok">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.73z"/></svg>
+          </a>
+          <a href="https://wa.me/6281378233416" target="_blank" class="footer-social-btn" aria-label="WhatsApp">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Links -->
+      <div class="footer-col">
+        <h4>Navigasi</h4>
+        <ul>
+          <li><a href="#home">Beranda</a></li>
+          <li><a href="#about">Tentang Kami</a></li>
+          <li><a href="#products">Koleksi</a></li>
+          <li><a href="#testimoni">Testimoni</a></li>
+          <li><a href="#contact">Kontak</a></li>
+        </ul>
+      </div>
+
+      <!-- Kategori -->
+      <div class="footer-col">
+        <h4>Kategori</h4>
+        <ul id="footerKategori"></ul>
+      </div>
+
+      <!-- Contact + Newsletter -->
+      <div class="footer-col">
+        <h4>Kontak</h4>
+        <div class="footer-contact-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>Sumatera Barat, Indonesia</span>
+        </div>
+        <div class="footer-contact-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.38 2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 6 6l.86-.86a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <span>+62-813 7823 3416</span>
+        </div>
+        <div class="footer-contact-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <span>eonimood.id@gmail.com</span>
+        </div>
+        <div class="footer-newsletter">
+          <h4 style="margin-top:16px;">Update Koleksi Terbaru</h4>
+          <p>Daftar email untuk info koleksi terbaru</p>
+          <form id="newsletterForm" action="https://formspree.io/f/xanjddag" method="POST">
+            <div class="newsletter-form">
+              <input type="email" name="email" placeholder="Email Anda" required autocomplete="email"/>
+              <button type="submit">Daftar</button>
+            </div>
+          </form>
+          <div class="newsletter-msg" id="newsletterMsg">✅ Berhasil berlangganan!</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2025 EONI. All rights reserved.</p>
+      <p>Indonesian Cultural Clothing Brand.</p>
     </div>
   </div>
 </footer>
 
-<!-- PRODUCT MODAL -->
-<div class="modal-backdrop" id="productModal">
-  <div class="modal-box" id="modalBox">
-    <button class="modal-close" id="modalClose" aria-label="Tutup"><i class="fas fa-times"></i></button>
-    <img id="modalImg" src="" alt="" class="modal-img"/>
-    <div class="modal-body">
-      <div class="modal-cat" id="modalCat"></div>
-      <div class="modal-title" id="modalTitle"></div>
-      <p class="modal-desc" id="modalDesc"></p>
-      <div class="modal-price-row">
-        <div class="modal-price" id="modalPrice"></div>
-        <div class="modal-rating" id="modalRating"></div>
-      </div>
-      <div class="modal-actions">
-        <a href="#" id="modalWaLink" target="_blank" class="modal-btn-wa">
-          <i class="fab fa-whatsapp"></i> <span>Tanya via WhatsApp</span>
-        </a>
-        <button class="modal-btn-share" id="modalShareBtn" aria-label="Bagikan"><i class="fas fa-share-alt"></i></button>
-      </div>
-    </div>
+<!-- ══════════════════════════════════
+     PRODUCT MODAL
+══════════════════════════════════ -->
+<div class="modal-backdrop" id="productModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal-box">
+    <button class="modal-close" id="modalClose" aria-label="Tutup">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <div id="modalContent"></div>
+    <div class="modal-actions" id="modalActions"></div>
   </div>
 </div>
 
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 <script>
-// ===== DATA =====
-const products = [
-  { title:"Batik Contempo Tee", desc:"Kaos dengan motif batik kontemporer yang nyaman dipakai untuk aktivitas sehari-hari.", price:"Rp 199.000", rating:4.9, image:"https://cigore.github.io/eoni/katalog-1.png", category:"Batik T-Shirt" },
-  { title:"Songket Heritage Jacket", desc:"Jaket songket Minangkabau dengan desain heritage yang elegan dan premium.", price:"Rp 349.000", rating:4.8, image:"https://cigore.github.io/eoni/katalog-6.png", category:"Songket Jacket" },
-  { title:"Ikat Essentials Shirt", desc:"Kemeja motif tenun ikat khas Sumba dengan bahan berkualitas tinggi dan detail halus.", price:"Rp 289.000", rating:4.7, image:"https://cigore.github.io/eoni/katalog-2.png", category:"Ikat Shirt" },
-  { title:"Lombok Artisan Hoodie", desc:"Hoodie dengan motif kain Sasak Lombok yang stylish dan hangat untuk semua musim.", price:"Rp 329.000", rating:4.9, image:"https://cigore.github.io/eoni/katalog-3.png", category:"Hoodie" },
-  { title:"Toraja Graphic T-Shirt", desc:"Kaos grafis Toraja Sulawesi dengan bahan nyaman dan desain yang memukau.", price:"Rp 179.000", rating:4.6, image:"https://cigore.github.io/eoni/katalog-7.png", category:"T-Shirt" },
-  { title:"Dayak Tapestry Polo", desc:"Polo shirt dengan motif Dayak yang memadukan tradisi dan modernitas.", price:"Rp 259.000", rating:4.8, image:"https://cigore.github.io/eoni/katalog-5.png", category:"Polo" },
-];
+(function() {
+  'use strict';
 
-const testimonials = [
-  { name:"Andi Pratama", loc:"Jakarta", text:"Bahan premium dan motifnya Indonesia banget. Suka banget koleksinya!", img:"https://randomuser.me/api/portraits/men/32.jpg", rating:5 },
-  { name:"Sinta Dewi", loc:"Surabaya", text:"Koleksinya unik dan pas banget buat daily outfit. Dapat banyak compliment!", img:"https://randomuser.me/api/portraits/women/44.jpg", rating:5 },
-  { name:"Fajar Nugroho", loc:"Yogyakarta", text:"Design motifnya keren, pelayanan ramah. Bangga pakai produk lokal!", img:"https://randomuser.me/api/portraits/men/78.jpg", rating:5 },
-];
+  /* ─── Dark Mode ─── */
+  const html = document.documentElement;
+  const darkToggle = document.getElementById('darkModeToggle');
+  const themeIcon = document.getElementById('themeIcon');
 
-// ===== MARQUEE =====
-const marqueeItems = ['Batik Heritage','Global Fashion','Indonesian Culture','Premium Quality','Sustainable Fashion','Proudly Local','Elegance of Natural Indonesia'];
-const track = document.getElementById('marqueeTrack');
-let marqueeHTML = '';
-for(let i=0;i<4;i++) marqueeItems.forEach(t => {
-  marqueeHTML += `<span class="marquee-item"><span class="marquee-dot"></span>${t}</span>`;
-});
-track.innerHTML = marqueeHTML;
+  // Sun SVG
+  const sunSVG = `<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="6"/><line x1="12" y1="18" x2="12" y2="22"/><line x1="4.22" y1="4.22" x2="7.05" y2="7.05"/><line x1="16.95" y1="16.95" x2="19.78" y2="19.78"/><line x1="2" y1="12" x2="6" y2="12"/><line x1="18" y1="12" x2="22" y2="12"/><line x1="4.22" y1="19.78" x2="7.05" y2="16.95"/><line x1="16.95" y1="7.05" x2="19.78" y2="4.22"/></svg>`;
+  // Moon SVG
+  const moonSVG = `<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>`;
 
-// ===== FILTER =====
-const cats = [...new Set(products.map(p=>p.category))];
-const filterBar = document.getElementById('filterBar');
-cats.forEach(c => {
-  const btn = document.createElement('button');
-  btn.className = 'filter-btn';
-  btn.dataset.cat = c;
-  btn.textContent = c;
-  filterBar.insertBefore(btn, filterBar.querySelector('.search-wrap'));
-});
-
-// Footer cats
-const footerCatList = document.getElementById('footerCatList');
-cats.forEach(c => {
-  footerCatList.innerHTML += `<li><a href="#collections">${c}</a></li>`;
-});
-
-let activeFilter = '';
-filterBar.querySelectorAll('.filter-btn').forEach(btn => {
-  btn.addEventListener('click', ()=>{
-    filterBar.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
-    btn.classList.add('active');
-    activeFilter = btn.dataset.cat;
-    renderProducts();
-  });
-});
-document.getElementById('searchInput').addEventListener('input', renderProducts);
-
-function renderProducts(){
-  const keyword = document.getElementById('searchInput').value.toLowerCase();
-  const filtered = products.filter(p => {
-    const matchCat = !activeFilter || p.category === activeFilter;
-    const matchSearch = !keyword || p.title.toLowerCase().includes(keyword) || p.desc.toLowerCase().includes(keyword);
-    return matchCat && matchSearch;
-  });
-  const grid = document.getElementById('productsGrid');
-  if(!filtered.length){
-    grid.innerHTML = `<div class="no-results">Produk tidak ditemukan</div>`;
-    return;
+  function applyTheme(dark) {
+    if (dark) {
+      html.classList.add('dark');
+      themeIcon.innerHTML = moonSVG;
+    } else {
+      html.classList.remove('dark');
+      themeIcon.innerHTML = sunSVG;
+    }
+    try { localStorage.setItem('eoni-theme', dark ? 'dark' : 'light'); } catch(e) {}
   }
-  grid.innerHTML = filtered.map((p,i) => `
-    <div class="product-card reveal" style="transition-delay:${i*0.1}s;" data-idx="${products.indexOf(p)}">
-      <div class="product-card-img-wrap">
-        <img src="${p.image}" alt="${p.title}" class="product-card-img" loading="lazy"/>
-        <div class="product-card-overlay">
-          <button class="product-card-action" onclick="openModal(${products.indexOf(p)})" aria-label="Lihat detail"><i class="fas fa-eye"></i></button>
-          <a href="https://wa.me/6281378233416?text=Halo,%20saya%20ingin%20bertanya%20tentang%20${encodeURIComponent(p.title)}" target="_blank" class="product-card-action" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+
+  // Init theme
+  let savedTheme = null;
+  try { savedTheme = localStorage.getItem('eoni-theme'); } catch(e) {}
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  applyTheme(savedTheme ? savedTheme === 'dark' : prefersDark);
+
+  darkToggle.addEventListener('click', () => applyTheme(!html.classList.contains('dark')));
+
+  /* ─── Toast ─── */
+  function showToast(msg, duration) {
+    const toast = document.getElementById('toast');
+    toast.textContent = msg;
+    toast.style.display = 'block';
+    clearTimeout(toast._t);
+    toast._t = setTimeout(() => { toast.style.display = 'none'; }, duration || 2200);
+  }
+
+  /* ─── Products Data ─── */
+  const productsData = [
+    { title: "Batik Contempo Tee", description: "Kaos dengan motif batik kontemporer", price: "Rp 199.000", rating: 4.9, image: "https://cigore.github.io/eoni/katalog-1.png", details: "Kaos motif batik kontemporer yang nyaman dipakai, cocok untuk aktivitas sehari-hari. Bahan combed 30s yang lembut di kulit.", category: "Batik T-Shirt" },
+    { title: "Songket Heritage Jacket", description: "Jaket dengan detail songket Minangkabau", price: "Rp 349.000", rating: 4.8, image: "https://cigore.github.io/eoni/katalog-6.png", details: "Jaket songket Minangkabau dengan desain heritage yang elegan dan nyaman dipakai di berbagai kesempatan.", category: "Songket Jacket" },
+    { title: "Ikat Essentials Shirt", description: "Kemeja dengan motif tenun ikat Sumba", price: "Rp 289.000", rating: 4.7, image: "https://cigore.github.io/eoni/katalog-2.png", details: "Kemeja motif tenun ikat khas Sumba dengan bahan berkualitas tinggi dan detail jahitan yang halus.", category: "Ikat Shirt" },
+    { title: "Lombok Artisan Hoodie", description: "Hoodie dengan motif kain Sasak Lombok", price: "Rp 329.000", rating: 4.9, image: "https://cigore.github.io/eoni/katalog-3.png", details: "Hoodie dengan motif kain Sasak Lombok yang stylish dan hangat untuk semua musim.", category: "Hoodie" },
+    { title: "Toraja Graphic T-Shirt", description: "Kaos dengan grafis Toraja Sulawesi", price: "Rp 179.000", rating: 4.6, image: "https://cigore.github.io/eoni/katalog-7.png", details: "Kaos grafis Toraja Sulawesi dengan bahan nyaman dan desain unik yang memuat simbol budaya Toraja.", category: "T-Shirt" },
+    { title: "Dayak Tapestry Polo", description: "Polo shirt dengan detail motif Dayak", price: "Rp 259.000", rating: 4.8, image: "https://cigore.github.io/eoni/katalog-5.png", details: "Polo shirt dengan motif Dayak yang memadukan tradisi dan modernitas dalam satu tampilan elegan.", category: "Polo" },
+  ];
+
+  /* ─── Category Filter ─── */
+  function getCategories() {
+    return [...new Set(productsData.map(p => p.category))];
+  }
+  function buildCategoryFilter() {
+    const sel = document.getElementById('categoryFilter');
+    sel.innerHTML = '<option value="">Semua Kategori</option>' +
+      getCategories().map(c => `<option value="${c}">${c}</option>`).join('');
+  }
+  function buildFooterCategories() {
+    const ul = document.getElementById('footerKategori');
+    ul.innerHTML = getCategories().map(c =>
+      `<li><a href="#products">${c}</a></li>`
+    ).join('');
+  }
+  buildCategoryFilter();
+  buildFooterCategories();
+
+  /* ─── Render Products ─── */
+  function starHTML(rating) {
+    return `<svg width="14" height="14" viewBox="0 0 24 24" fill="#F59E0B" stroke="none"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> ${rating}`;
+  }
+  function renderProducts(list) {
+    const grid = document.getElementById('productsGrid');
+    if (!list.length) {
+      grid.innerHTML = '<div class="no-results">Produk tidak ditemukan.</div>';
+      return;
+    }
+    grid.innerHTML = list.map((p, i) => `
+      <div class="product-card" data-idx="${i}" tabindex="0" role="button" aria-label="Lihat detail ${p.title}">
+        <div class="product-img-wrap">
+          <img src="${p.image}" alt="${p.title}" loading="lazy"/>
+          <span class="product-category-tag">${p.category}</span>
+          <div class="product-overlay">
+            <div class="product-overlay-btns">
+              <button class="pob pob-view btn-detail" data-idx="${i}" type="button">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                Detail
+              </button>
+              <a href="https://wa.me/6281378233416?text=Halo,%20saya%20ingin%20bertanya%20tentang%20produk%20${encodeURIComponent(p.title)}" target="_blank" class="pob pob-wa" rel="noopener noreferrer">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+                WhatsApp
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="product-info">
+          <h3>${p.title}</h3>
+          <p>${p.description}</p>
+          <div class="product-bottom">
+            <span class="product-price">${p.price}</span>
+            <span class="product-rating">${starHTML(p.rating)}</span>
+          </div>
         </div>
       </div>
-      <div class="product-card-info">
-        <div class="product-card-cat">${p.category}</div>
-        <div class="product-card-title">${p.title}</div>
-        <div class="product-card-desc">${p.desc}</div>
+    `).join('');
+
+    // Add detail button listeners
+    grid.querySelectorAll('.btn-detail').forEach(btn => {
+      btn.addEventListener('click', e => {
+        e.stopPropagation();
+        const idx = parseInt(btn.dataset.idx);
+        openModal(list[idx]);
+      });
+    });
+
+    // Card click
+    grid.querySelectorAll('.product-card').forEach(card => {
+      card.addEventListener('click', e => {
+        if (e.target.closest('.pob-wa')) return;
+        const idx = parseInt(card.dataset.idx);
+        openModal(list[idx]);
+      });
+      card.addEventListener('keydown', e => {
+        if (e.key === 'Enter') {
+          const idx = parseInt(card.dataset.idx);
+          openModal(list[idx]);
+        }
+      });
+    });
+  }
+
+  /* ─── Filter Logic ─── */
+  let currentList = productsData.slice();
+  function filterProducts() {
+    const kw = (document.getElementById('searchInput').value || '').toLowerCase().trim();
+    const cat = document.getElementById('categoryFilter').value;
+    currentList = productsData.filter(p => {
+      if (cat && p.category !== cat) return false;
+      if (kw && !p.title.toLowerCase().includes(kw) && !p.description.toLowerCase().includes(kw) && !p.details.toLowerCase().includes(kw)) return false;
+      return true;
+    });
+    renderProducts(currentList);
+  }
+  document.getElementById('searchInput').addEventListener('input', filterProducts);
+  document.getElementById('categoryFilter').addEventListener('change', filterProducts);
+  renderProducts(productsData);
+
+  /* ─── Product Modal ─── */
+  const modalBackdrop = document.getElementById('productModal');
+  const modalContent = document.getElementById('modalContent');
+  const modalActions = document.getElementById('modalActions');
+  const modalClose = document.getElementById('modalClose');
+  let activeProduct = null;
+
+  function openModal(product) {
+    activeProduct = product;
+    modalContent.innerHTML = `
+      <div class="modal-img">
+        <img src="${product.image}" alt="${product.title}" loading="lazy"/>
       </div>
-      <div class="product-card-bottom">
-        <div class="product-price">${p.price}</div>
-        <div class="product-rating"><i class="fas fa-star"></i> ${p.rating}</div>
+      <div id="modalTitle" class="modal-title">${product.title}</div>
+      <div class="modal-desc">${product.details}</div>
+      <div class="modal-price-row">
+        <span class="modal-price">${product.price}</span>
+        <span class="product-rating">${starHTML(product.rating)}</span>
+      </div>
+    `;
+    modalActions.innerHTML = `
+      <a href="https://wa.me/6281378233416?text=Halo,%20saya%20ingin%20bertanya%20tentang%20produk%20${encodeURIComponent(product.title)}" target="_blank" class="btn-primary" rel="noopener noreferrer">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+        Tanya WhatsApp
+      </a>
+      <button class="btn-outline" id="shareBtn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+        Bagikan
+      </button>
+    `;
+    modalBackdrop.classList.add('open');
+    document.body.style.overflow = 'hidden';
+
+    // Share button
+    document.getElementById('shareBtn').addEventListener('click', () => {
+      if (navigator.share) {
+        navigator.share({ title: product.title, text: product.details, url: window.location.href + '#products' }).catch(() => {});
+      } else {
+        try {
+          navigator.clipboard.writeText(window.location.href + '#products');
+          showToast('🔗 Link produk telah disalin!');
+        } catch(e) {
+          showToast('🔗 Link: ' + window.location.href);
+        }
+      }
+    });
+  }
+
+  function closeModal() {
+    modalBackdrop.classList.remove('open');
+    document.body.style.overflow = '';
+    activeProduct = null;
+  }
+
+  modalClose.addEventListener('click', closeModal);
+  modalBackdrop.addEventListener('click', e => { if (e.target === modalBackdrop) closeModal(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+  /* ─── Testimonials Swiper ─── */
+  const testimoniData = [
+    { name: "Andi", location: "Jakarta", text: "Bahan premium dan motifnya Indonesia banget, suka banget! Sudah beli 3x dan selalu puas.", img: "https://randomuser.me/api/portraits/men/32.jpg", rating: 5 },
+    { name: "Sinta", location: "Surabaya", text: "Koleksinya unik dan cocok buat daily outfit. Recommended banget untuk yang suka fashion lokal!", img: "https://randomuser.me/api/portraits/women/44.jpg", rating: 5 },
+    { name: "Dewangga", location: "Bali", text: "Bangga pakai produk lokal yang stylish. Kualitasnya nggak kalah sama brand luar.", img: "https://randomuser.me/api/portraits/men/65.jpg", rating: 4 },
+    { name: "Citra", location: "Bandung", text: "Fast respon, packing rapi, produk nyaman banget. Pelayanan EONI selalu memuaskan!", img: "https://randomuser.me/api/portraits/women/68.jpg", rating: 5 },
+    { name: "Fajar", location: "Yogyakarta", text: "Design motifnya keren banget, pelayanan ramah dan pengiriman cepat. Pasti beli lagi!", img: "https://randomuser.me/api/portraits/men/78.jpg", rating: 5 },
+  ];
+
+  function buildStars(r) {
+    let s = '';
+    for (let i = 1; i <= 5; i++) {
+      s += `<svg width="15" height="15" viewBox="0 0 24 24" fill="${i<=r?'#F59E0B':'#E5E7EB'}" stroke="none"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>`;
+    }
+    return s;
+  }
+
+  const wrapper = document.getElementById('testiWrapper');
+  wrapper.innerHTML = testimoniData.map(t => `
+    <div class="swiper-slide">
+      <div class="testi-card">
+        <div class="testi-top">
+          <img src="${t.img}" alt="${t.name}" loading="lazy"/>
+          <div>
+            <div class="testi-name">${t.name}</div>
+            <div class="testi-location">${t.location}</div>
+          </div>
+        </div>
+        <div class="testi-stars">${buildStars(t.rating)}</div>
+        <div class="testi-text">"${t.text}"</div>
       </div>
     </div>
   `).join('');
-  // Trigger reveal for new cards
-  setTimeout(()=>{
-    grid.querySelectorAll('.reveal').forEach(el => {
-      el.classList.add('visible');
-    });
-  }, 50);
-}
-renderProducts();
 
-// ===== TESTIMONIALS =====
-const testiGrid = document.getElementById('testiGrid');
-testiGrid.innerHTML = testimonials.map(t => `
-  <div class="testi-card">
-    <div class="testi-stars">${'<i class="fas fa-star"></i>'.repeat(t.rating)}</div>
-    <p class="testi-text">"${t.text}"</p>
-    <div class="testi-author">
-      <img src="${t.img}" alt="${t.name}" class="testi-avatar" loading="lazy"/>
-      <div>
-        <div class="testi-name">${t.name}</div>
-        <div class="testi-loc">${t.loc}</div>
-      </div>
-    </div>
-  </div>
-`).join('');
-
-// ===== MODAL =====
-let currentProduct = null;
-function openModal(idx){
-  const p = products[idx];
-  currentProduct = p;
-  document.getElementById('modalImg').src = p.image;
-  document.getElementById('modalImg').alt = p.title;
-  document.getElementById('modalCat').textContent = p.category;
-  document.getElementById('modalTitle').textContent = p.title;
-  document.getElementById('modalDesc').textContent = p.desc;
-  document.getElementById('modalPrice').textContent = p.price;
-  document.getElementById('modalRating').innerHTML = `<i class="fas fa-star"></i> ${p.rating} / 5.0`;
-  document.getElementById('modalWaLink').href = `https://wa.me/6281378233416?text=Halo,%20saya%20ingin%20bertanya%20tentang%20${encodeURIComponent(p.title)}`;
-  document.getElementById('productModal').classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-function closeModal(){
-  document.getElementById('productModal').classList.remove('open');
-  document.body.style.overflow = '';
-}
-document.getElementById('modalClose').onclick = closeModal;
-document.getElementById('productModal').addEventListener('click', e => {
-  if(e.target === document.getElementById('productModal')) closeModal();
-});
-document.addEventListener('keydown', e => { if(e.key==='Escape') closeModal(); });
-
-// Share button
-document.getElementById('modalShareBtn').addEventListener('click', ()=>{
-  const url = window.location.href + '#collections';
-  if(navigator.share && currentProduct){
-    navigator.share({ title: currentProduct.title, text: currentProduct.desc, url });
-  } else if(navigator.clipboard){
-    navigator.clipboard.writeText(url);
-    showToast('Link berhasil disalin!');
-  }
-});
-
-// ===== TOAST =====
-function showToast(msg){
-  const t = document.getElementById('toast');
-  t.textContent = msg;
-  t.classList.add('show');
-  setTimeout(()=>t.classList.remove('show'), 2500);
-}
-
-// ===== CONTACT FORM =====
-document.getElementById('contactForm').addEventListener('submit', async function(e){
-  e.preventDefault();
-  const btn = this.querySelector('.form-submit');
-  btn.textContent = 'Mengirim...';
-  try {
-    const res = await fetch(this.action, { method:'POST', body:new FormData(this), headers:{'Accept':'application/json'} });
-    if(res.ok){
-      document.getElementById('formSuccess').style.display = 'block';
-      this.reset();
-      btn.textContent = 'Terkirim ✓';
-      setTimeout(()=>{ document.getElementById('formSuccess').style.display='none'; btn.textContent='Kirim Pesan'; }, 3000);
+  new Swiper('#testiSwiper', {
+    slidesPerView: 1,
+    spaceBetween: 20,
+    pagination: { el: '.swiper-pagination', clickable: true },
+    autoplay: { delay: 4000, disableOnInteraction: false },
+    loop: true,
+    breakpoints: {
+      640: { slidesPerView: 2 },
+      1024: { slidesPerView: 3 }
     }
-  } catch(err){ btn.textContent = 'Kirim Pesan'; }
-});
-
-// ===== NAV =====
-const nav = document.getElementById('mainNav');
-window.addEventListener('scroll', ()=>{
-  nav.classList.toggle('scrolled', window.scrollY > 60);
-  document.getElementById('scrollTop').classList.toggle('visible', window.scrollY > 400);
-});
-document.getElementById('scrollTop').onclick = ()=> window.scrollTo({ top:0, behavior:'smooth' });
-
-// Mobile Menu
-const hamburger = document.getElementById('hamburgerBtn');
-const mobileMenu = document.getElementById('mobileMenu');
-hamburger.addEventListener('click', ()=>{
-  hamburger.classList.toggle('open');
-  mobileMenu.classList.toggle('open');
-  document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
-});
-document.getElementById('mobileMenuClose').onclick = ()=>{
-  hamburger.classList.remove('open');
-  mobileMenu.classList.remove('open');
-  document.body.style.overflow = '';
-};
-document.querySelectorAll('[data-mobile-link]').forEach(l => {
-  l.addEventListener('click', ()=>{
-    hamburger.classList.remove('open');
-    mobileMenu.classList.remove('open');
-    document.body.style.overflow = '';
   });
-});
 
-// ===== CURSOR =====
-const cursor = document.getElementById('cursor');
-const follower = document.getElementById('cursorFollower');
-let mx=0, my=0, fx=0, fy=0;
-document.addEventListener('mousemove', e=>{
-  mx = e.clientX; my = e.clientY;
-  cursor.style.left = mx+'px';
-  cursor.style.top = my+'px';
-});
-function animFollower(){
-  fx += (mx-fx)*0.12;
-  fy += (my-fy)*0.12;
-  follower.style.left = fx+'px';
-  follower.style.top = fy+'px';
-  requestAnimationFrame(animFollower);
-}
-animFollower();
-document.querySelectorAll('a, button').forEach(el=>{
-  el.addEventListener('mouseenter', ()=>{ cursor.style.transform='translate(-50%,-50%) scale(2)'; follower.style.opacity='0.15'; });
-  el.addEventListener('mouseleave', ()=>{ cursor.style.transform='translate(-50%,-50%) scale(1)'; follower.style.opacity='0.5'; });
-});
+  /* ─── Bottom Nav Active State ─── */
+  const sections = ['home','products','testimoni','contact'];
+  const bnItems = {
+    home: document.getElementById('bn-home'),
+    products: document.getElementById('bn-products'),
+    testimoni: document.getElementById('bn-testi'),
+    contact: document.getElementById('bn-contact')
+  };
 
-// ===== SCROLL REVEAL =====
-const revealObserver = new IntersectionObserver((entries)=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting) e.target.classList.add('visible');
+  function updateBottomNav() {
+    const scrollY = window.scrollY + 120;
+    let active = 'home';
+    sections.forEach(id => {
+      const el = document.getElementById(id);
+      if (el && el.offsetTop <= scrollY) active = id;
+    });
+    Object.entries(bnItems).forEach(([key, el]) => {
+      if (!el) return;
+      el.classList.toggle('active', key === active);
+    });
+  }
+
+  // Smooth scroll on bottom nav click
+  document.querySelectorAll('.bn-item').forEach(item => {
+    item.addEventListener('click', e => {
+      const href = item.getAttribute('href');
+      if (href && href.startsWith('#')) {
+        e.preventDefault();
+        const target = document.querySelector(href);
+        if (target) target.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
   });
-}, { threshold: 0.1 });
-function observeReveals(){
-  document.querySelectorAll('.reveal:not(.visible)').forEach(el=>revealObserver.observe(el));
-}
-observeReveals();
-// Re-observe after product render
-const gridObserver = new MutationObserver(observeReveals);
-gridObserver.observe(document.getElementById('productsGrid'), { childList: true });
+
+  /* ─── Scroll to Top ─── */
+  const scrollTopBtn = document.getElementById('scrollTopBtn');
+  window.addEventListener('scroll', () => {
+    if (window.pageYOffset > 400) scrollTopBtn.classList.add('visible');
+    else scrollTopBtn.classList.remove('visible');
+    updateBottomNav();
+  }, { passive: true });
+  scrollTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+  /* ─── Contact Form ─── */
+  document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const btn = this.querySelector('button[type=submit]');
+    const origText = btn.innerHTML;
+    btn.innerHTML = 'Mengirim...';
+    btn.disabled = true;
+    fetch(this.action, {
+      method: 'POST',
+      body: new FormData(this),
+      headers: { 'Accept': 'application/json' }
+    }).then(r => {
+      if (r.ok) {
+        document.getElementById('formSuccess').style.display = 'block';
+        this.reset();
+        setTimeout(() => { document.getElementById('formSuccess').style.display = 'none'; }, 3000);
+      } else {
+        showToast('Gagal mengirim. Coba lagi.');
+      }
+    }).catch(() => {
+      showToast('Gagal mengirim. Cek koneksi.');
+    }).finally(() => {
+      btn.innerHTML = origText;
+      btn.disabled = false;
+    });
+  });
+
+  /* ─── Newsletter Form ─── */
+  document.getElementById('newsletterForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    fetch(this.action, {
+      method: 'POST',
+      body: new FormData(this),
+      headers: { 'Accept': 'application/json' }
+    }).then(r => {
+      const msg = document.getElementById('newsletterMsg');
+      if (r.ok) {
+        msg.style.display = 'block';
+        this.reset();
+        setTimeout(() => { msg.style.display = 'none'; }, 3000);
+      } else {
+        showToast('Gagal berlangganan. Coba lagi.');
+      }
+    }).catch(() => showToast('Gagal. Cek koneksi.'));
+  });
+
+  /* ─── AOS ─── */
+  AOS.init({ once: true, duration: 800, easing: 'ease-out' });
+
+})();
 </script>
 </body>
 </html>
